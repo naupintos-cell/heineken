@@ -1623,141 +1623,152 @@ async function generateStoryCard(){
   cv.width=W;cv.height=H;
   const c=cv.getContext('2d');
 
-  /* ── BACKGROUND — matches result screen ── */
-  // Deep black with subtle green radial
-  const bg=c.createRadialGradient(W/2,0,0,W/2,0,1100);
-  bg.addColorStop(0,'rgba(0,50,15,0.22)');
-  bg.addColorStop(1,'#020802');
+  /* ── BACKGROUND ── */
   c.fillStyle='#020802';c.fillRect(0,0,W,H);
+  const bg=c.createRadialGradient(W/2,H*.35,0,W/2,H*.35,700);
+  bg.addColorStop(0,'rgba(0,60,18,0.28)');bg.addColorStop(1,'transparent');
   c.fillStyle=bg;c.fillRect(0,0,W,H);
 
-  /* ── TOP LABEL ── */
-  c.textAlign='center';c.font='500 24px Inter,Arial,sans-serif';
-  c.letterSpacing='6px';c.fillStyle='rgba(0,179,71,0.7)';
-  c.fillText('YOUR HEINEKEN TONIGHT',W/2,80);
+  /* ── TOP LABEL (y=90) ── */
+  c.textAlign='center';
+  c.font='500 24px Inter,Arial,sans-serif';
+  c.letterSpacing='7px';c.fillStyle='rgba(0,179,71,0.65)';
+  c.fillText('YOUR HEINEKEN TONIGHT',W/2,90);
 
-  /* ── CONTEXT MINI PILLS ── */
+  /* ── DIVIDER (y=115) ── */
+  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
+  c.beginPath();c.moveTo(100,115);c.lineTo(W-100,115);c.stroke();
+
+  /* ── PILLS (start y=160) — single row, smaller font ── */
   const pills=[];
-  if(ctx.neighborhood||ctx.city) pills.push('📍  '+(ctx.neighborhood||ctx.city));
-  if(ctx.temp)                   pills.push('🌡  '+ctx.temp);
-  if(ctx.timeLabel)              pills.push('🕐  '+ctx.dayLabel+' '+ctx.timeLabel);
+  if(ctx.neighborhood||ctx.city) pills.push('📍 '+(ctx.neighborhood||ctx.city));
+  if(ctx.temp)                   pills.push('🌡 '+ctx.temp);
+  if(ctx.timeLabel)              pills.push('🕐 '+ctx.timeLabel);
 
-  // Draw pill row
-  c.font='400 26px Inter,Arial,sans-serif';c.letterSpacing='1.5px';
-  c.fillStyle='rgba(0,179,71,0.65)';
-  const pillTotalW=pills.reduce((s,p)=>s+c.measureText(p).width+60,0)-60;
-  let px=(W-pillTotalW)/2;
+  c.font='400 22px Inter,Arial,sans-serif';c.letterSpacing='1px';
+  c.fillStyle='rgba(0,179,71,0.55)';
+  const gap=40,py=160,ph=38,pr=6;
+  const widths=pills.map(p=>c.measureText(p).width);
+  const totalW=widths.reduce((s,w)=>s+w+32,0)+(pills.length-1)*gap;
+  let px=(W-totalW)/2;
   pills.forEach((p,i)=>{
-    const pw=c.measureText(p).width;
-    // pill bg
-    c.strokeStyle='rgba(0,179,71,0.25)';c.lineWidth=1.5;
+    const pw=widths[i];
+    c.strokeStyle='rgba(0,179,71,0.2)';c.lineWidth=1;
     c.beginPath();
-    const ph=44,py=105,pr=8;
-    c.roundRect(px-16,py,pw+32,ph,pr);
+    if(c.roundRect)c.roundRect(px-2,py-26,pw+36,ph,pr);
+    else c.rect(px-2,py-26,pw+36,ph);
     c.stroke();
-    c.fillStyle='rgba(0,179,71,0.65)';
-    c.fillText(p,px,py+30);
-    px+=pw+60;
+    c.fillStyle='rgba(0,179,71,0.55)';
+    c.fillText(p,px+16,py);
+    px+=pw+36+gap;
   });
 
-  /* ── DIVIDER ── */
-  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
-  c.beginPath();c.moveTo(80,175);c.lineTo(W-80,175);c.stroke();
+  /* ── DIVIDER (y=210) ── */
+  c.strokeStyle='rgba(245,242,235,0.06)';
+  c.beginPath();c.moveTo(100,210);c.lineTo(W-100,210);c.stroke();
 
-  /* ── BOTTLE IMAGE — centered, hero ── */
-  const pr=rec?rec.product:'original';
-  const imgSrc=IMGS[pr]||IMGS.original;
+  /* ── BOTTLE (y=230 → 820) ── */
+  const pr2=rec?rec.product:'original';
+  const imgSrc=IMGS[pr2]||IMGS.original;
+  let bottleBottom=820;
   try{
     const img=await new Promise((res,rej)=>{
       const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=imgSrc;
     });
     const ih=580,iw=ih*(img.naturalWidth/img.naturalHeight||0.42);
-    // glow
-    const gr=c.createRadialGradient(W/2,480,0,W/2,480,320);
-    gr.addColorStop(0,'rgba(0,140,50,0.25)');gr.addColorStop(1,'transparent');
-    c.fillStyle=gr;c.fillRect(0,180,W,640);
-    c.shadowColor='rgba(0,168,70,0.35)';c.shadowBlur=50;c.shadowOffsetY=16;
-    c.drawImage(img,(W-iw)/2,195,iw,ih);
+    const ix=(W-iw)/2,iy=230;
+    bottleBottom=iy+ih;
+    const gr=c.createRadialGradient(W/2,iy+ih/2,0,W/2,iy+ih/2,360);
+    gr.addColorStop(0,'rgba(0,140,50,0.22)');gr.addColorStop(1,'transparent');
+    c.fillStyle=gr;c.fillRect(0,iy-30,W,ih+60);
+    c.shadowColor='rgba(0,168,70,0.3)';c.shadowBlur=40;c.shadowOffsetY=12;
+    c.drawImage(img,ix,iy,iw,ih);
     c.shadowColor='transparent';c.shadowBlur=0;c.shadowOffsetY=0;
-  }catch(e){console.warn(e)}
+  }catch(e){bottleBottom=800}
+
+  let y=bottleBottom+32;
 
   /* ── PRODUCT NAME ── */
   c.textAlign='center';c.letterSpacing='5px';
-  c.font='500 28px Inter,Arial,sans-serif';
+  c.font='500 26px Inter,Arial,sans-serif';
   c.fillStyle='rgba(0,179,71,0.85)';
-  c.fillText((rec?PROD[rec.product]?.n:'Heineken Original').toUpperCase(),W/2,830);
+  c.fillText((rec?PROD[rec.product]?.n:'Heineken Original').toUpperCase(),W/2,y);
+  y+=70;
 
-  /* ── TITLE ── */
-  c.font='300 italic 88px Georgia,serif';
+  /* ── TITLE (word wrap) ── */
+  c.font='300 italic 86px Georgia,serif';
   c.fillStyle='#F5F2EB';c.letterSpacing='-0.5px';
   const title=rec?rec.title:'Tonight Calls for Original';
   const words=title.split(' ');
-  let line='',ty=940,maxW=880;
+  let line='',maxW=860;
   words.forEach(w=>{
     const test=line?line+' '+w:w;
     if(c.measureText(test).width>maxW&&line){
-      c.fillText(line,W/2,ty);line=w;ty+=106;
+      c.fillText(line,W/2,y);line=w;y+=100;
     } else line=test;
   });
-  c.fillText(line,W/2,ty);
+  c.fillText(line,W/2,y);y+=72;
 
-  /* ── REASON ── */
+  /* ── REASON (2 lines max) ── */
   if(rec&&rec.reason){
-    c.font='300 32px Georgia,serif';
-    c.fillStyle='rgba(245,242,235,0.45)';c.letterSpacing='0px';
+    c.font='300 28px Georgia,serif';
+    c.fillStyle='rgba(245,242,235,0.42)';c.letterSpacing='0px';
     const rWords=rec.reason.split(' ');
-    let rl='',ry=ty+80,lines=0;
+    let rl='',lines=0;
     rWords.forEach(w=>{
       if(lines>=2)return;
       const t=rl?rl+' '+w:w;
-      if(c.measureText(t).width>820&&rl){c.fillText(rl,W/2,ry);rl=w;ry+=50;lines++;}
-      else rl=t;
+      if(c.measureText(t).width>820&&rl){
+        c.fillText(rl,W/2,y);rl=w;y+=46;lines++;
+      } else rl=t;
     });
-    if(rl&&lines<2)c.fillText(rl,W/2,ry);
-    ty=ry+30;
+    if(rl&&lines<2){c.fillText(rl,W/2,y);y+=46;}
+    y+=16;
   }
 
   /* ── TAGS ── */
-  if(rec&&rec.tags&&rec.tags.length){
-    c.font='500 22px Inter,Arial,sans-serif';c.letterSpacing='3px';
+  if(rec&&rec.tags?.length){
+    c.font='500 20px Inter,Arial,sans-serif';c.letterSpacing='3px';
     const tags=rec.tags.slice(0,3);
-    const tagTotalW=tags.reduce((s,t)=>s+c.measureText(t.toUpperCase()).width+56,0)-20;
-    let tx=(W-tagTotalW)/2;const tagY=ty+40;
+    const tw2=tags.reduce((s,t)=>s+c.measureText(t.toUpperCase()).width+50,0)-20;
+    let tx=(W-tw2)/2;
     tags.forEach(t=>{
-      const tw=c.measureText(t.toUpperCase()).width;
-      c.strokeStyle='rgba(0,179,71,0.25)';c.lineWidth=1;
-      c.beginPath();c.roundRect(tx-10,tagY-28,tw+20,38,4);c.stroke();
-      c.fillStyle='rgba(0,179,71,0.6)';
-      c.fillText(t.toUpperCase(),tx,tagY);
-      tx+=tw+56;
+      const w2=c.measureText(t.toUpperCase()).width;
+      c.strokeStyle='rgba(0,179,71,0.22)';c.lineWidth=1;
+      c.beginPath();
+      if(c.roundRect)c.roundRect(tx-8,y-24,w2+16,34,4);
+      else c.rect(tx-8,y-24,w2+16,34);
+      c.stroke();
+      c.fillStyle='rgba(0,179,71,0.55)';
+      c.fillText(t.toUpperCase(),tx,y);
+      tx+=w2+50;
     });
-    ty=tagY+30;
+    y+=50;
   }
 
-  /* ── META ROW ── */
-  const metaY=Math.max(ty+60,1620);
+  /* ── META ROW (fixed near bottom) ── */
+  const metaY=Math.max(y+40,1640);
   c.strokeStyle='rgba(245,242,235,0.06)';c.lineWidth=1;
-  c.beginPath();c.moveTo(100,metaY-28);c.lineTo(W-100,metaY-28);c.stroke();
+  c.beginPath();c.moveTo(100,metaY-26);c.lineTo(W-100,metaY-26);c.stroke();
   const meta=[ctx.neighborhood||ctx.city,ctx.temp,ctx.timeLabel].filter(Boolean).join('  ·  ');
-  c.font='400 22px Inter,Arial,sans-serif';c.letterSpacing='3px';
-  c.fillStyle='rgba(245,242,235,0.18)';c.textAlign='center';
+  c.font='400 20px Inter,Arial,sans-serif';c.letterSpacing='3px';
+  c.fillStyle='rgba(245,242,235,0.18)';
   c.fillText(meta.toUpperCase(),W/2,metaY);
 
   /* ── BOTTOM BAR ── */
-  const barY=Math.max(metaY+70,1750);
-  c.fillStyle='rgba(0,70,20,0.3)';c.fillRect(0,barY,W,H-barY);
-  c.strokeStyle='rgba(0,168,70,0.15)';c.lineWidth=1;
+  const barY=Math.max(metaY+60,1760);
+  c.fillStyle='rgba(0,60,18,0.3)';c.fillRect(0,barY,W,H-barY);
+  c.strokeStyle='rgba(0,168,70,0.14)';c.lineWidth=1;
   c.beginPath();c.moveTo(0,barY);c.lineTo(W,barY);c.stroke();
-  // star
-  c.save();c.translate(W/2,barY+44);c.beginPath();
+  c.save();c.translate(W/2,barY+42);c.beginPath();
   for(let i=0;i<10;i++){
-    const r=i%2===0?14:6,a=(i*Math.PI/5)-Math.PI/2;
-    i===0?c.moveTo(r*Math.cos(a),r*Math.sin(a)):c.lineTo(r*Math.cos(a),r*Math.sin(a));
+    const r2=i%2===0?13:5,a=(i*Math.PI/5)-Math.PI/2;
+    i===0?c.moveTo(r2*Math.cos(a),r2*Math.sin(a)):c.lineTo(r2*Math.cos(a),r2*Math.sin(a));
   }
   c.closePath();c.fillStyle='#C41E1E';c.fill();c.restore();
-  c.font='500 20px Inter,Arial,sans-serif';c.letterSpacing='4px';
-  c.fillStyle='rgba(245,242,235,0.45)';
-  c.fillText('BUILT BY KAIRO · MAKE IT SIMPLE — 2026',W/2,barY+86);
+  c.font='500 19px Inter,Arial,sans-serif';c.letterSpacing='4px';
+  c.fillStyle='rgba(245,242,235,0.4)';
+  c.fillText('BUILT BY KAIRO · MAKE IT SIMPLE — 2026',W/2,barY+82);
 
   const link=document.createElement('a');
   link.download='heineken-ritual.png';
