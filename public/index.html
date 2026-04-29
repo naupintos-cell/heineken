@@ -670,7 +670,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
       <div class="fstat"><div class="fstat-v">0</div><div class="fstat-l">Downloads needed</div></div>
     </div>
     <button class="btn-launch" onclick="launchExperience()">Live the Experience</button>
-    <div class="fcta-note">Developed by Kairo · kairoinc.lat</div>
+    <div class="fcta-note"><a href="https://kairoinc.lat" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Built by KAIRO · Make it simple — 2026</a></div>
   </section>
 </div><!-- END LANDING -->
 
@@ -678,14 +678,14 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 <canvas id="cv"></canvas>
 <div id="dot"></div><div id="ring"></div>
 <div id="toast"></div>
-<div id="credit"><a href="https://kairoinc.lat" target="_blank">Developed by Kairo</a></div>
+<div id="credit"><a href="https://kairoinc.lat" target="_blank" rel="noopener">Built by KAIRO · Make it simple — 2026</a></div>
 
 <header id="hdr" class="off">
   <div class="hlogo">
     <div class="hstar"><svg width="20" height="20" viewBox="0 0 20 20"><polygon points="10,1 12.4,7.2 19.5,7.2 13.8,11.3 16,17.5 10,13.4 4,17.5 6.2,11.3 .5,7.2 7.6,7.2" fill="#C41E1E"/></svg></div>
     <span class="hname">Your Heineken</span>
     <div class="hsep"></div>
-    <span class="hby">by Kairo</span>
+    <a href="https://kairoinc.lat" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="hby">Built by KAIRO</span></a>
   </div>
   <div style="display:flex;align-items:center;gap:.75rem">
     <button id="audio-btn" onclick="toggleAmbient()" style="font-size:.9rem;color:var(--dim);padding:.2rem .4rem;transition:color 200ms;line-height:1" title="Toggle ambient sound">♩</button>
@@ -1725,7 +1725,7 @@ async function generateStoryCard(){
 
   c.font='500 22px Inter,Arial,sans-serif';c.letterSpacing='5px';
   c.fillStyle='rgba(245,242,235,0.5)';c.textAlign='center';
-  c.fillText('YOUR HEINEKEN  ·  BY KAIRO',W/2,barY+90);
+  c.fillText('BUILT BY KAIRO · MAKE IT SIMPLE — 2026',W/2,barY+90);
 
   /* ── DOWNLOAD ── */
   const link=document.createElement('a');
@@ -1859,6 +1859,41 @@ startCityPulse();
 
 /* ── INIT ── */
 window.addEventListener("load",()=>setTimeout(()=>go("hero"),1400));
+
+/* ── PROTECTION ── */
+(function(){
+  // Disable right-click
+  document.addEventListener('contextmenu',e=>e.preventDefault());
+
+  // Disable common dev shortcuts
+  document.addEventListener('keydown',e=>{
+    if(
+      (e.ctrlKey&&e.shiftKey&&['I','J','C','U'].includes(e.key.toUpperCase()))||
+      (e.metaKey&&e.altKey&&['I','J','C'].includes(e.key.toUpperCase()))||
+      e.key==='F12'
+    ){e.preventDefault();return false}
+  });
+
+  // Detect devtools open (size method)
+  const threshold=160;
+  function check(){
+    if(window.outerWidth-window.innerWidth>threshold||
+       window.outerHeight-window.innerHeight>threshold){
+      document.body.style.filter='blur(8px)';
+      document.body.style.pointerEvents='none';
+    } else {
+      document.body.style.filter='';
+      document.body.style.pointerEvents='';
+    }
+  }
+  setInterval(check,1000);
+
+  // Disable text selection on non-input elements
+  document.addEventListener('selectstart',e=>{
+    if(!['INPUT','TEXTAREA'].includes(e.target.tagName))
+      e.preventDefault();
+  });
+})();
 </script>
 </body>
 </html>
