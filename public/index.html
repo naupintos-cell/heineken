@@ -1264,7 +1264,6 @@ function getTimeCtx(){
 async function startScan(){
   ans=[null,null];
   document.querySelectorAll(".opt").forEach(o=>o.classList.remove("sel"));
-  document.getElementById("sf").classList.remove("on");
   go("scan");
 
   const step=i=>document.getElementById("ss"+i);
@@ -1459,9 +1458,7 @@ function renderRes(){
 }
 
 /* ── SAVE ── */
-function openSF(){document.getElementById("sf").classList.toggle("on")}
-function saveR(){
-  if(!rec)return;
+function openSF(){
   const p=PROD[rec.product]||PROD.original;
   rits.unshift({ts:Date.now(),date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),product:p.n,pk:rec.product,title:rec.title,where:ctx.neighborhood||ctx.city||"",who:ans[0],vibe:ans[1],temp:ctx.temp,weather:ctx.weather,place:document.getElementById("sf-p").value,with_:document.getElementById("sf-w").value});
   localStorage.setItem("hk",JSON.stringify(rits));
