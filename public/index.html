@@ -638,15 +638,31 @@ dialog#rsm-dialog::backdrop{
   height:100%;background:var(--bright);
   transition:width 600ms ease;
 }
+
+/* header star fix */
+.hdr-star, .hd-star, .nav-star, [class*="star"] svg {
+  vertical-align: middle !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+dialog#rsm-dialog{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;background:#0a1a0a;border:1px solid rgba(0,179,71,.2);padding:0;max-width:360px;width:92vw;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8)}
+dialog#rsm-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+@keyframes dialog-in{from{opacity:0;transform:translate(-50%,-50%) scale(0.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+dialog#rsm-dialog[open]{animation:dialog-in 0.3s cubic-bezier(0.34,1.2,0.64,1) forwards}
+.rsm-inp{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#F5F2EB;padding:.75rem 1rem;font-size:1rem;font-family:"Cormorant Garamond",Georgia,serif;outline:none;-webkit-appearance:none;box-sizing:border-box;margin-bottom:.6rem;display:block}
+.rsm-btn{width:100%;background:#007A33;color:#fff;border:none;padding:.9rem;font-family:Inter,system-ui,sans-serif;font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:8px;margin-top:.25rem}
+.rsm-dot{width:52px;height:52px;border-radius:50%;border:1px solid rgba(0,179,71,.25);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:all 400ms}
+.rsm-dot.on{background:rgba(0,122,51,.35);border-color:#00A846}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 
-const GLASS_IMG="/img/glass.png";
-const REWARD_SUB="/img/sub.png";
-const REWARD_KEG="/img/keg.png";
-const IMGS={original:"/img/original.png",silver:"/img/silver.png",zero:"/img/zero.png"};
-const PROD={original:{n:"Heineken Original",color:"#00A846"},silver:{n:"Heineken Silver",color:"#7FB3D3"},zero:{n:"Heineken 0.0",color:"#0047AB"}};
+const GLASS_IMG='/img/glass.png';
+const REWARD_SUB='/img/sub.png';
+const REWARD_KEG='/img/keg.png';
+const IMGS={original:'/img/original.png',silver:'/img/silver.png',zero:'/img/zero.png'};
+const PROD={original:{n:'Heineken Original',color:'#00A846'},silver:{n:'Heineken Silver',color:'#7FB3D3'},zero:{n:'Heineken 0.0',color:'#0047AB'}};
 
 
 
@@ -723,34 +739,21 @@ function rsmSave(){
 
   <!-- ── S1: HERO PITCH ── -->
   <section class="l-section" id="ls0">
-    <!-- 1. Kicker -->
     <div class="lh-kicker">Heineken × Kairo</div>
-
-    <!-- 2. Welcome badge (hidden by default, shown by JS) -->
     <div id="user-greeting" style="display:none;font-size:.46rem;letter-spacing:3px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:#00A846;background:rgba(0,122,51,.12);border:1px solid rgba(0,179,71,.18);padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem"></div>
-
-    <!-- 3. Red star -->
     <div style="margin-bottom:1.25rem">
       <svg width="48" height="48" viewBox="0 0 48 48" style="display:block;margin:0 auto">
-        <polygon points="24,3 28.5,17 43,17 31,26 35.5,40 24,31.5 12.5,40 17,26 5,17 19.5,17" fill="#C41E1E" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-linejoin="round"/>
+        <polygon points="24,3 28.5,17 43,17 31,26 35.5,40 24,31.5 12.5,40 17,26 5,17 19.5,17" fill="#C41E1E" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-linejoin="round"/>
       </svg>
     </div>
-
-    <!-- 4. Headline (English, personalized by JS) -->
     <h1 class="lh-title" id="lh-main">
       Heineken knows<br>
       when they <strong>buy.</strong><br>
       <em style="font-style:italic;color:var(--bright)">Not when they drink.</em>
     </h1>
-
-    <!-- 5. Sub -->
     <p class="lh-sub">We built what nobody did. The ritual touchpoint that happens while they drink.</p>
-
-    <!-- 6. NFC / CTA -->
     <div class="nfc-wrap">
-      <div class="nfc-ring"></div>
-      <div class="nfc-ring"></div>
-      <div class="nfc-ring"></div>
+      <div class="nfc-ring"></div><div class="nfc-ring"></div><div class="nfc-ring"></div>
       <div class="nfc-core"><span class="nfc-icon">⬡</span></div>
     </div>
     <p style="font-size:.46rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.25);font-family:Inter,system-ui;margin-bottom:2.5rem">NFC · No Download · Instant Activation</p>
@@ -906,6 +909,7 @@ function rsmSave(){
       </button>
     </div>
   </div>
+
 
 <div id="app">
 
@@ -1509,9 +1513,9 @@ const PLAYLISTS={
 };
 
 function openSpotify(){
-  var SPMAP={Celebrating:"https://open.spotify.com/playlist/37i9dQZF1DX0f7yOp8AjF3",Relaxed:"https://open.spotify.com/playlist/37i9dQZF1DXcCnTAt8CfNe",Wild:"https://open.spotify.com/playlist/37i9dQZF1DX5Ejj0EkURtP",Balanced:"https://open.spotify.com/playlist/37i9dQZF1DX4WYpdgoIcn6",Curious:"https://open.spotify.com/playlist/37i9dQZF1DX9XIFQuFvzM4"};
-  var v=(typeof ans!=="undefined"&&ans[1])||"Relaxed";
-  window.open(SPMAP[v]||SPMAP.Relaxed,"_blank","noopener");
+  var SPMAP={Celebrating:'https://open.spotify.com/playlist/37i9dQZF1DX0f7yOp8AjF3',Relaxed:'https://open.spotify.com/playlist/37i9dQZF1DXcCnTAt8CfNe',Wild:'https://open.spotify.com/playlist/37i9dQZF1DX5Ejj0EkURtP',Balanced:'https://open.spotify.com/playlist/37i9dQZF1DX4WYpdgoIcn6',Curious:'https://open.spotify.com/playlist/37i9dQZF1DX9XIFQuFvzM4'};
+  var v=(typeof ans!=='undefined'&&ans[1])||'Relaxed';
+  window.open(SPMAP[v]||SPMAP.Relaxed,'_blank','noopener');
 }
 
 
@@ -1723,109 +1727,195 @@ function drawGlassGuide(c,w,h){
    STORY CARD — Canvas 1080×1920
 ═══════════════════════════════════════ */
 async function generateStoryCard(){
-  toast('Generating card...');
+  toast('Generating...');
+  var W=1080,H=1920;
+  var cv=document.createElement('canvas');
+  cv.width=W;cv.height=H;
+  var c=cv.getContext('2d');
 
-  // Target the result page content
-  const target=document.getElementById('pg-res');
-  if(!target){toast('No result to capture');return}
+  var pk=(typeof rec!=='undefined'&&rec&&rec.product)||'original';
+  var prodNames={original:'Heineken Original',silver:'Heineken Silver',zero:'Heineken 0.0'};
+  var prodColors={original:'#00A846',silver:'#7FB3D3',zero:'#4B8FD4'};
+  var pName=prodNames[pk]||'Heineken Original';
+  var pColor=prodColors[pk]||'#00A846';
+  var title=(typeof rec!=='undefined'&&rec&&rec.title)||'Your Heineken Ritual';
+  var desc=(typeof rec!=='undefined'&&rec&&rec.description)||'';
 
-  // Temporarily make it full-viewport for capture
-  const prev={
-    pos:target.style.position,
-    top:target.style.top,
-    left:target.style.left,
-    width:target.style.width,
-    height:target.style.height,
-    zIndex:target.style.zIndex,
-    overflow:target.style.overflow,
-    bg:target.style.background,
-  };
+  // ── BACKGROUND ──
+  var bg=c.createLinearGradient(0,0,0,H);
+  bg.addColorStop(0,'#020b03');
+  bg.addColorStop(0.5,'#040f04');
+  bg.addColorStop(1,'#020802');
+  c.fillStyle=bg;c.fillRect(0,0,W,H);
 
-  // Clone approach: capture the .body inner div
-  const body=target.querySelector('.body');
-  const inner=target.querySelector('.wrap');
-  if(!inner){toast('Nothing to capture');return}
+  // Top radial glow
+  var g1=c.createRadialGradient(W/2,300,0,W/2,300,700);
+  g1.addColorStop(0,'rgba(0,168,70,0.12)');
+  g1.addColorStop(1,'rgba(0,0,0,0)');
+  c.fillStyle=g1;c.fillRect(0,0,W,H);
 
-  // Create a styled wrapper for capture
-  const wrapper=document.createElement('div');
-  wrapper.style.cssText=`
-    position:fixed;top:0;left:0;
-    width:390px;height:844px;
-    background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,60,20,0.22),#020802 65%);
-    overflow:hidden;
-    z-index:-1;opacity:0;
-    font-family:'Cormorant Garamond',Georgia,serif;
-    -webkit-font-smoothing:antialiased;
-    padding:2rem 1.5rem;
-    display:flex;flex-direction:column;
-    box-sizing:border-box;
-  `;
+  // Bottom radial glow
+  var g2=c.createRadialGradient(W/2,H-200,0,W/2,H-200,500);
+  g2.addColorStop(0,'rgba(0,100,40,0.08)');
+  g2.addColorStop(1,'rgba(0,0,0,0)');
+  c.fillStyle=g2;c.fillRect(0,0,W,H);
 
-  // Build the card content mirroring result screen
-  const pr=rec?PROD[rec.product]?.n:'Heineken Original';
-  const imgSrc=rec?IMGS[rec.product]:IMGS.original;
-  const pills=[];
-  if(ctx.neighborhood||ctx.city) pills.push('📍 '+(ctx.neighborhood||ctx.city));
-  if(ctx.temp)                   pills.push('🌡 '+ctx.temp);
-  if(ctx.timeLabel)              pills.push('🕐 '+ctx.dayLabel+' '+ctx.timeLabel);
+  // ── TOP GREEN BAR ──
+  c.fillStyle='#007A33';c.fillRect(0,0,W,14);
 
-  wrapper.innerHTML=`
-    <div style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:#00B347;margin-bottom:.75rem;font-family:Inter,system-ui">YOUR HEINEKEN TONIGHT</div>
-    <div style="display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1.25rem">
-      ${pills.map(p=>`<span style="font-size:.42rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,168,70,.28);color:#00B347;padding:3px 9px;font-family:Inter,system-ui">${p}</span>`).join('')}
-    </div>
-    <div style="position:relative;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
-      <div style="position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(0,100,30,.28),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-      <img src="${imgSrc}" style="height:220px;width:auto;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(0,168,70,.4));position:relative;z-index:2;margin-bottom:1rem">
-      <div style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:rgba(0,179,71,.85);font-family:Inter,system-ui;margin-bottom:.5rem">${pr.toUpperCase()}</div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,7vw,2.2rem);font-weight:300;color:#F5F2EB;line-height:1.08;margin-bottom:.65rem;font-style:italic">${rec?rec.title:'Tonight Calls for Original'}</div>
-      <div style="font-size:.85rem;font-weight:300;color:rgba(245,242,235,.45);line-height:1.65;margin-bottom:.75rem;font-family:'Cormorant Garamond',Georgia,serif">${rec?rec.reason:''}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.28rem;justify-content:center">
-        ${(rec&&rec.tags||[]).map(t=>`<span style="font-size:.38rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,168,70,.22);color:#00B347;padding:3px 7px;font-family:Inter,system-ui">${t}</span>`).join('')}
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(245,242,235,.08);padding-top:.75rem;margin-top:.75rem;display:flex;align-items:center;justify-content:space-between">
-      <div style="display:flex;align-items:center;gap:7px">
-        
-      </div>
-      <span style="font-size:.38rem;letter-spacing:3px;text-transform:uppercase;color:rgba(0,179,71,.5);font-family:Inter,system-ui">BUILT BY KAIRO</span>
-    </div>
-  `;
+  // ── STAR FUNCTION ──
+  function star(cx,cy,r1,r2,col,alpha){
+    c.save();c.globalAlpha=alpha||1;
+    c.translate(cx,cy);c.beginPath();
+    for(var i=0;i<10;i++){
+      var r=i%2===0?r1:r2,a=(i*Math.PI/5)-Math.PI/2;
+      i===0?c.moveTo(r*Math.cos(a),r*Math.sin(a)):c.lineTo(r*Math.cos(a),r*Math.sin(a));
+    }
+    c.closePath();c.fillStyle=col||'#C41E1E';c.fill();c.restore();
+  }
 
-  document.body.appendChild(wrapper);
-  // Brief wait for images to load
-  await new Promise(r=>setTimeout(r,600));
+  // ── HEADER ──
+  star(W/2,120,58,24);
 
-  // Capture with html2canvas at 2x for retina
-  try{
-    const cv=await html2canvas(wrapper,{
-      scale:2.75,
-      useCORS:true,
-      allowTaint:true,
-      backgroundColor:'#020802',
-      width:390,height:844,
-      logging:false,
+  c.fillStyle='rgba(245,242,235,0.22)';
+  c.font='500 28px Inter,Arial,sans-serif';
+  c.textAlign='center';
+  c.letterSpacing='8px';
+  c.fillText('HEINEKEN \u00d7 KAIRO',W/2,200);
+
+  // thin line
+  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
+  c.beginPath();c.moveTo(100,230);c.lineTo(W-100,230);c.stroke();
+
+  // ── LARGE PRODUCT STAR (center piece) ──
+  // Big decorative star as bottle replacement
+  star(W/2,H*0.36,190,80,pColor,0.15);
+  star(W/2,H*0.36,160,66,'#C41E1E',0.9);
+
+  // Inner white star
+  star(W/2,H*0.36,58,24,'rgba(255,255,255,0.9)',1);
+
+  // Product color accent ring
+  c.save();
+  c.translate(W/2,H*0.36);
+  c.beginPath();
+  c.arc(0,0,220,0,Math.PI*2);
+  c.strokeStyle=pColor;c.lineWidth=1.5;
+  c.globalAlpha=0.18;c.stroke();
+  c.arc(0,0,235,0,Math.PI*2);
+  c.strokeStyle=pColor;c.lineWidth=0.8;
+  c.globalAlpha=0.08;c.stroke();
+  c.restore();
+
+  // Subtle star pattern in background
+  for(var i=0;i<8;i++){
+    var angle=i*(Math.PI*2/8),rad=300;
+    star(W/2+Math.cos(angle)*rad,H*0.36+Math.sin(angle)*rad,12,5,'rgba(0,168,70,0.12)',1);
+  }
+
+  // ── PRODUCT NAME ──
+  c.fillStyle=pColor;
+  c.font='400 32px Inter,Arial,sans-serif';
+  c.textAlign='center';
+  c.letterSpacing='6px';
+  c.globalAlpha=0.8;
+  c.fillText(pName.toUpperCase(),W/2,H*0.56);
+  c.globalAlpha=1;
+
+  // thin divider
+  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
+  c.beginPath();c.moveTo(W/2-200,H*0.58);c.lineTo(W/2+200,H*0.58);c.stroke();
+
+  // ── TITLE ──
+  c.fillStyle='#F5F2EB';
+  c.textAlign='center';
+  c.letterSpacing='-1px';
+  function drawWrapped(text,y,size,maxW,lh){
+    c.font='300 '+size+'px "Cormorant Garamond",Georgia,serif';
+    var words=text.split(' '),lines=[],line='';
+    for(var i=0;i<words.length;i++){
+      var t=line+words[i]+' ';
+      if(c.measureText(t).width>maxW&&line){lines.push(line.trim());line=words[i]+' ';}
+      else line=t;
+    }
+    lines.push(line.trim());
+    lines.forEach(function(l,i){c.fillText(l,W/2,y+i*lh);});
+    return y+lines.length*lh;
+  }
+  var afterTitle=drawWrapped(title,H*0.62,92,860,106);
+
+  // ── DESCRIPTION ──
+  if(desc){
+    c.font='300 36px "Cormorant Garamond",Georgia,serif';
+    c.fillStyle='rgba(245,242,235,0.42)';c.letterSpacing='0px';
+    afterTitle=drawWrapped(desc.slice(0,120)+(desc.length>120?'...':''),afterTitle+36,36,800,52)+16;
+  }
+
+  // ── CONTEXT PILLS ──
+  var pills=[];
+  if(typeof ctx!=='undefined'){
+    if(ctx.neighborhood||ctx.city)pills.push({icon:'\uD83D\uDCCD',txt:(ctx.neighborhood||ctx.city)});
+    if(ctx.temp)pills.push({icon:'\uD83C\uDF21',txt:String(ctx.temp).replace(/\u00b0C/g,'').replace('C','')+'°C'});
+    if(ctx.weather)pills.push({icon:'\u2600',txt:ctx.weather});
+  }
+  if(typeof ans!=='undefined'){
+    if(ans[0])pills.push({icon:'\uD83D\uDC65',txt:ans[0]});
+    if(ans[1])pills.push({icon:'\u2728',txt:ans[1]});
+  }
+
+  if(pills.length){
+    var pillY=afterTitle+48;
+    c.font='400 26px Inter,Arial,sans-serif';
+    c.letterSpacing='1px';
+    var gap=20,pw=pills.map(function(p){return c.measureText(p.icon+' '+p.txt).width+52;});
+    var totalW=pw.reduce(function(a,b){return a+b+gap;},0)-gap;
+    var px=W/2-totalW/2;
+    pills.forEach(function(p,i){
+      var w=pw[i],txt=p.icon+' '+p.txt;
+      c.strokeStyle='rgba(0,168,70,0.3)';c.lineWidth=1.5;
+      c.fillStyle='rgba(0,168,70,0.06)';
+      c.beginPath();c.roundRect(px,pillY,w,54,27);c.fill();c.stroke();
+      c.fillStyle='rgba(245,242,235,0.55)';
+      c.fillText(txt,px+w/2,pillY+35);
+      px+=w+gap;
     });
-    const link=document.createElement('a');
-    link.download='heineken-ritual.png';
-    var _du=cv.toDataURL('image/png',0.95);
-    var _nt=window.open('','_blank');
-    if(_nt){
-      _nt.document.open();
-      _nt.document.write('<html><head><meta name=viewport content="width=device-width">');
-      _nt.document.write('<body style="margin:0;background:#020802;display:flex;flex-direction:column;align-items:center;padding:20px;font-family:sans-serif">');
-      _nt.document.write('<img style="max-width:100%;width:min(400px,100%);border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.8)" src="'+_du+'">');
-      _nt.document.write('<p style="margin-top:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center">iOS: hold image &rarr; Save to Photos</p>');
-      _nt.document.write('<a style="margin-top:12px;background:#007A33;color:#fff;padding:13px 24px;border-radius:2px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;text-decoration:none" href="'+_du+'" download="heineken-ritual.png">&darr; Save Card</a>');
-      _nt.document.write('</'+'body></'+'html>');
-      _nt.document.close();
-      toast('Story Card ready ★');
-    }else{var _a=document.createElement('a');_a.href=_du;_a.download='heineken-ritual.png';_a.click();toast('Saved ★');}
-  }catch(e){
-    console.error(e);
-    toast('Error generating card');
-  }finally{
-    document.body.removeChild(wrapper);
+  }
+
+  // ── DECORATIVE STARS BOTTOM ──
+  star(W/2-280,H-240,14,6,'rgba(196,30,30,0.3)',1);
+  star(W/2,H-240,10,4,'rgba(196,30,30,0.5)',1);
+  star(W/2+280,H-240,14,6,'rgba(196,30,30,0.3)',1);
+
+  // ── BOTTOM BAR ──
+  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
+  c.beginPath();c.moveTo(100,H-160);c.lineTo(W-100,H-160);c.stroke();
+
+  c.fillStyle='rgba(245,242,235,0.2)';
+  c.font='400 24px Inter,Arial,sans-serif';
+  c.letterSpacing='5px';c.textAlign='center';
+  c.fillText('YOUR HEINEKEN  \u00b7  BUILT BY KAIRO',W/2,H-108);
+
+  // bottom green bar
+  c.fillStyle='#007A33';c.fillRect(0,H-14,W,14);
+
+  // ── RENDER IN NEW TAB ──
+  var dataUrl=cv.toDataURL('image/png',0.96);
+  var nt=window.open('','_blank');
+  if(nt){
+    var d=nt.document;d.open();
+    d.write('<!DOCTYPE html><html><head>');
+    d.write('<meta name=viewport content="width=device-width,initial-scale=1">');
+    d.write('<title>Your Heineken Ritual</title>');
+    d.write('<body style="margin:0;background:#020802;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px;font-family:Inter,sans-serif">');
+    d.write('<img style="max-width:100%;width:min(420px,100%);border-radius:16px;box-shadow:0 40px 80px rgba(0,0,0,.85),0 0 0 1px rgba(0,168,70,.12)" src="'+dataUrl+'">');
+    d.write('<p style="margin-top:18px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,242,235,.28);text-align:center">iOS: hold image \u2192 Save to Photos</p>');
+    d.write('<a style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;background:#007A33;color:#fff;padding:14px 28px;border-radius:2px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;text-decoration:none" href="'+dataUrl+'" download="heineken-ritual.png">\u2193 Save Card</a>');
+    d.write('</'+'body></'+'html>');
+    d.close();
+    toast('Story Card ready \u2605');
+  } else {
+    var a=document.createElement('a');a.href=dataUrl;a.download='heineken-ritual.png';a.click();
+    toast('Saved \u2605');
   }
 }
 
@@ -1936,24 +2026,20 @@ startCityPulse();
 (function(){
   function applyUser(){
     try{
-      var u=new URLSearchParams(location.search).get("user");
+      var u=new URLSearchParams(location.search).get('user');
       if(!u)return;
-      var first=u.split(" ")[0];
-      // App header
-      var hname=document.querySelector(".hname");
+      var first=u.split(' ')[0];
+      var hname=document.querySelector('.hname');
       if(hname)hname.textContent=first+"'s Heineken";
-      // App hero
-      var ht=document.querySelector(".h-title");
-      if(ht)ht.innerHTML="The right bottle,<br><em>"+first+".</em>";
-      // Landing badge
-      var g=document.getElementById("user-greeting");
-      if(g){g.textContent="Welcome, "+first;g.style.display="block";}
-      // Landing headline - English, personalized
-      var lh=document.getElementById("lh-main");
-      if(lh)lh.innerHTML="Heineken knows<br>when they <strong>buy.</strong><br><em style='font-style:italic;color:var(--bright)'>Not when they drink, "+first+".</em>";
+      var g=document.getElementById('user-greeting');
+      if(g){g.textContent='Welcome, '+first;g.style.display='block';}
+      var ht=document.querySelector('.h-title');
+      if(ht)ht.innerHTML='The right bottle,<br><em>'+first+'.</em>';
+      var lh=document.getElementById('lh-main');
+      if(lh)lh.innerHTML='Heineken knows<br>when they <strong>buy.</strong><br><em style="font-style:italic;color:var(--bright)">Not when they drink, '+first+'.</em>';
     }catch(e){}
   }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",applyUser);}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',applyUser);}
   else{applyUser();}
   setTimeout(applyUser,150);
 })();
