@@ -4,32 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#020802">
-<title>Your Heineken × Kairo</title>
+<title>Heineken Live × Kairo</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><polygon points='24,3 28.5,17 43,17 31,26 35.5,40 24,31.5 12.5,40 17,26 5,17 19.5,17' fill='%23C41E1E'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-html,body{height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+html,body{min-height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
 
-/* FULL SCREEN HERO */
-.hero{
-  min-height:100svh;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:48px 28px;
-  text-align:center;
-  position:relative;
-}
-
-/* NAV */
-.nav{
-  position:fixed;top:0;left:0;right:0;
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
   padding:18px 24px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(2,8,2,.85);
+  background:rgba(2,8,2,.9);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(245,242,235,.05);
-  z-index:100;
 }
 .nav-left{display:flex;align-items:center;gap:8px}
 .nav-star{color:#C41E1E;font-size:11px}
@@ -38,7 +26,15 @@ html,body{height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',sys
 .live-dot{width:6px;height:6px;border-radius:50%;background:#00A846;animation:ld 2s ease-in-out infinite}
 @keyframes ld{0%,100%{opacity:.35}50%{opacity:1}}
 
-/* CONTENT */
+/* HERO */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:100px 28px 60px;
+  text-align:center;
+  position:relative;
+}
 .hero-content{max-width:380px;width:100%}
 
 .kicker{
@@ -48,7 +44,7 @@ html,body{height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',sys
 
 /* VIDEO */
 .video-wrap{
-  width:100%;max-width:260px;margin:0 auto 2rem;
+  width:100%;max-width:260px;margin:0 auto 2.5rem;
   border-radius:20px;overflow:hidden;
   border:1px solid rgba(0,168,70,.25);
   box-shadow:0 24px 60px rgba(0,0,0,.8),0 0 40px rgba(0,168,70,.1);
@@ -58,14 +54,13 @@ html,body{height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',sys
 /* HEADLINE */
 .headline{
   font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(2rem,8vw,3.2rem);
+  font-size:clamp(2.2rem,8vw,3.4rem);
   font-weight:300;line-height:1.08;
   letter-spacing:-.01em;
   margin-bottom:.75rem;
 }
 .headline em{color:#00A846;font-style:italic}
 
-/* SUB */
 .sub{
   font-size:.85rem;color:rgba(245,242,235,.38);
   font-weight:300;line-height:1.7;
@@ -80,29 +75,53 @@ html,body{height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',sys
   font-size:.62rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;
   text-decoration:none;width:100%;
   transition:background .2s;
+  -webkit-appearance:none;
 }
 .cta:hover{background:#00A846}
+.hint{margin-top:.75rem;font-size:.46rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.18)}
 
-.hint{
-  margin-top:.75rem;
-  font-size:.46rem;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(245,242,235,.18);
-}
+/* WHAT IT IS — below fold */
+.section{padding:72px 28px;max-width:480px;margin:0 auto}
+.sep{border:none;border-top:1px solid rgba(245,242,235,.07)}
 
-/* BOTTOM CREDIT */
-.credit{
-  position:absolute;bottom:28px;
-  font-size:.46rem;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(245,242,235,.15);
-}
+.s-kicker{font-size:.5rem;letter-spacing:5px;text-transform:uppercase;color:rgba(0,168,70,.6);margin-bottom:1rem;display:block}
+.s-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,6vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.s-title em{color:#00A846;font-style:italic}
+.s-body{font-size:.88rem;color:rgba(245,242,235,.42);font-weight:300;line-height:1.75}
+
+/* FLOW */
+.flow{display:flex;flex-direction:column;gap:0;margin-top:2.5rem}
+.flow-item{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(245,242,235,.06)}
+.flow-item:last-child{border-bottom:none}
+.flow-n{font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(0,168,70,.4);min-width:20px;padding-top:3px}
+.flow-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:300;color:#F5F2EB;margin-bottom:.2rem}
+.flow-desc{font-size:.78rem;color:rgba(245,242,235,.38);line-height:1.6}
+.flow-tag{display:inline-block;margin-top:.4rem;font-size:.44rem;letter-spacing:2px;text-transform:uppercase;color:#00A846;border:1px solid rgba(0,168,70,.22);padding:3px 10px;border-radius:2px}
+
+/* BENEFITS */
+.benefits{display:flex;flex-direction:column;gap:1px;background:rgba(245,242,235,.07);border-radius:4px;overflow:hidden;margin-top:2rem}
+.benefit{background:#020802;padding:24px 20px}
+.benefit-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:#F5F2EB;line-height:1;margin-bottom:.3rem}
+.benefit-label{font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.28);margin-bottom:.4rem}
+.benefit-desc{font-size:.78rem;color:rgba(245,242,235,.38);line-height:1.6}
+
+/* CTA FINAL */
+.cta-final{padding:80px 28px;text-align:center;max-width:480px;margin:0 auto}
+.cta-q{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,7vw,3rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem}
+.cta-q em{color:rgba(245,242,235,.28);font-style:italic}
+.cta-actions{display:flex;flex-direction:column;gap:10px}
+.btn-p{display:flex;align-items:center;justify-content:center;gap:10px;background:#007A33;color:#fff;padding:18px 24px;border-radius:2px;font-size:.62rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;text-decoration:none}
+.btn-s{display:flex;align-items:center;justify-content:center;color:rgba(245,242,235,.4);padding:16px 24px;border-radius:2px;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;border:1px solid rgba(245,242,235,.12);text-decoration:none}
+
+footer{border-top:1px solid rgba(245,242,235,.07);padding:24px;display:flex;align-items:center;justify-content:space-between;font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.18)}
 </style>
 </head>
 <body>
 
-<nav class="nav">
+<nav>
   <div class="nav-left">
     <span class="nav-star">★</span>
-    <span class="nav-brand">Your Heineken × Kairo</span>
+    <span class="nav-brand">Heineken Live × Kairo</span>
   </div>
   <div class="nav-live">
     <div class="live-dot"></div>
@@ -110,39 +129,126 @@ html,body{height:100%;background:#020802;color:#F5F2EB;font-family:'DM Sans',sys
   </div>
 </nav>
 
+<!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-content">
 
     <span class="kicker">Heineken × Kairo</span>
 
-    <!-- VIDEO -->
     <div class="video-wrap">
       <video autoplay loop muted playsinline>
         <source src="/HEINEKEN.mp4" type="video/mp4">
       </video>
     </div>
 
-    <!-- HEADLINE -->
     <h1 class="headline">
-      You know when<br>they buy.<br>
-      <em>Not when<br>they drink.</em>
+      The show starts<br>
+      <em>before the<br>first sip.</em>
     </h1>
 
-    <!-- SUB -->
-    <p class="sub">We built what nobody did.<br>Live it.</p>
+    <p class="sub">We built the ritual touchpoint<br>Heineken never had. Live it.</p>
 
-    <!-- CTA -->
     <a href="https://heineken-production.up.railway.app" target="_blank" class="cta">
       Live the ritual
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-
-    <p class="hint">No download · 60 seconds</p>
+    <p class="hint">NFC · No download · 60 seconds</p>
 
   </div>
-
-  <p class="credit">Built by Kairo · kairoinc.lat</p>
 </div>
+
+<hr class="sep">
+
+<!-- ── WHAT IT IS ── -->
+<div class="section">
+  <span class="s-kicker">What it is</span>
+  <h2 class="s-title">Every Heineken show.<br><em>Now digitized.</em></h2>
+  <p class="s-body">At every Heineken event, thousands of bottles open. None of that moment is captured. No data, no content, no connection. Heineken Live changes that — one tap, one ritual, one card.</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <span class="flow-n">01</span>
+      <div>
+        <p class="flow-title">Tap the wristband</p>
+        <p class="flow-desc">NFC wristband at the event opens the ritual instantly. No app. No download. The show is the key.</p>
+        <span class="flow-tag">Zero friction</span>
+      </div>
+    </div>
+    <div class="flow-item">
+      <span class="flow-n">02</span>
+      <div>
+        <p class="flow-title">Your ritual</p>
+        <p class="flow-desc">Real location, real weather, the show you're at. Claude AI recommends your ideal Heineken for this exact moment.</p>
+        <span class="flow-tag">Claude AI · Open-Meteo</span>
+      </div>
+    </div>
+    <div class="flow-item">
+      <span class="flow-n">03</span>
+      <div>
+        <p class="flow-title">Your show soundtrack</p>
+        <p class="flow-desc">Spotify playlist curated for your ritual — the music, the moment, the vibe. All connected.</p>
+        <span class="flow-tag">Spotify integration</span>
+      </div>
+    </div>
+    <div class="flow-item">
+      <span class="flow-n">04</span>
+      <div>
+        <p class="flow-title">Share · Vote · Win</p>
+        <p class="flow-desc">Your Story Card from the show. Your community votes. More shows, more rituals — more Heineken benefits unlocked.</p>
+        <span class="flow-tag">UGC · Retention loop</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- ── WHAT HEINEKEN GETS ── -->
+<div class="section">
+  <span class="s-kicker">What Heineken gets</span>
+  <h2 class="s-title">Four things you<br><em>don't have today.</em></h2>
+
+  <div class="benefits">
+    <div class="benefit">
+      <p class="benefit-n">1:1</p>
+      <p class="benefit-label">Real data</p>
+      <p class="benefit-desc">Who drinks what, at which show, with who. Data that doesn't exist anywhere today.</p>
+    </div>
+    <div class="benefit">
+      <p class="benefit-n">UGC</p>
+      <p class="benefit-label">At zero cost</p>
+      <p class="benefit-desc">Every Story Card shared is Heineken in someone's feed — from a real show, in a real moment. You didn't brief it. You didn't pay for it.</p>
+    </div>
+    <div class="benefit">
+      <p class="benefit-n">∞</p>
+      <p class="benefit-label">Show to show retention</p>
+      <p class="benefit-desc">More rituals = more benefits. Heineken becomes the reason to come back to every show.</p>
+    </div>
+    <div class="benefit">
+      <p class="benefit-n">★</p>
+      <p class="benefit-label">The only touchpoint that happens while they drink</p>
+      <p class="benefit-desc">Sponsorships live before the show. Loyalty programs live after. This is the moment nobody owned. Until now.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- ── CTA FINAL ── -->
+<div class="cta-final">
+  <h2 class="cta-q">
+    Does this make<br>sense <em>to talk?</em>
+  </h2>
+  <div class="cta-actions">
+    <a href="https://wa.me/5491100000000" class="btn-p" target="_blank">WhatsApp</a>
+    <a href="mailto:hola@kairoinc.lat?subject=Heineken Live × Kairo" class="btn-s">hola@kairoinc.lat</a>
+  </div>
+</div>
+
+<footer>
+  <span>★ Heineken Live × Kairo</span>
+  <span>kairoinc.lat</span>
+</footer>
 
 </body>
 </html>
