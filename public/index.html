@@ -222,6 +222,46 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 .btn-ok{width:100%;background:rgba(0,122,51,.18);color:var(--bright);padding:.58rem;font-family:'Cormorant Garamond',serif;font-size:.88rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,168,70,.2);transition:background 180ms}
 .btn-ok:hover{background:rgba(0,122,51,.28)}
 
+/* ── COMMUNITY CTA ── */
+.community-cta{
+  margin-top:1.25rem;padding:1.4rem 1.25rem;
+  background:linear-gradient(135deg,rgba(0,80,25,.18) 0%,rgba(0,40,12,.08) 100%);
+  border:1px solid rgba(0,168,70,.22);
+  position:relative;overflow:hidden;
+  animation:fu .5s .45s both;
+  text-align:center;
+}
+.community-cta::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--bright),transparent);
+  opacity:.5;
+}
+.community-stars{
+  font-size:.72rem;letter-spacing:6px;color:var(--bright);
+  margin-bottom:.5rem;opacity:.7;
+}
+.community-title{
+  font-family:var(--serif);font-size:1.35rem;font-weight:300;
+  color:var(--cream);margin-bottom:.3rem;line-height:1.1;
+}
+.community-sub{
+  font-size:.44rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--dim);margin-bottom:1rem;line-height:1.8;
+}
+.btn-community{
+  width:100%;background:var(--green);color:#fff;
+  padding:.82rem 1.5rem;font-size:.66rem;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;border-radius:1px;
+  transition:background 200ms,transform 150ms ease,box-shadow 200ms;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+}
+.btn-community:hover{background:var(--bright);transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,168,70,.35)}
+.btn-community:active{transform:scale(.98)}
+.btn-community .bc-badge{
+  background:rgba(255,255,255,.15);border-radius:2px;
+  padding:2px 6px;font-size:.48rem;letter-spacing:1px;
+}
+
 .biz-strip{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;animation:fu .5s .5s both}
 .bi{text-align:center}
 .bi-v{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--cream)}
@@ -867,7 +907,7 @@ function rsmSave(){
 <header id="hdr" class="off">
   <div class="hlogo">
     <div class="hstar">
-      <svg width="22" height="22" viewBox="0 0 214 221" xmlns="http://www.w3.org/2000/svg">
+      <svg width="22" height="22" viewBox="47 0 120 132" xmlns="http://www.w3.org/2000/svg">
         <path fill="#E3000F" d="M91.2,79.4L76.6,124.5c0,.1,0,.2.1.2s.1.1.2.2.2.2.2.2c.1,0,.2,0,.2,0l38.3-27.9 38.3,27.9c.1.1.2.1.2,0s.1-.1.2-.2.2-.2.2-.2c.1-.1.1-.1.1-.2L140,79.4l38.4-27.8c.1-.1.1-.1.1-.2s0-.1-.1-.3-.1-.3-.1-.3c0-.1-.1-.1-.2-.1l-47.4.1L116.1,5.6c0-.1-.1-.1-.2-.1s-.1,0-.3,0-.3,0-.3,0c-.1,0-.2.1-.2.1L100.5,50.7l-47.4-.1c-.1,0-.2.1-.2.1s-.1.1-.1.3-.1.3-.1.3c0,.1,0,.2.1.2L91.2,79.4z"/>
         <path fill="rgba(255,255,255,0.15)" d="M154.7,130.5c-.7,0-1.4-.2-2-.6s-1.5-1-3.9-2.6c-6.9-4.6-23.8-16.1-33.3-22.9-9.1,6.5-24.7,17.1-33.3,22.9-2.4,1.6-3.9,2.6-3.9,2.6c-.6.4-1.3.6-2,.6-.7,0-1.3-.2-1.9-.5-.5-.3-.9-.6-1-.7-.2-.1-.5-.3-.9-.7-.8-.7-1.5-2.2-1.1-3.7.4-1.5.4-1.7,1.2-4.5,2.9-9.9,8.1-28,11.5-38.7-9-6.7-23.9-18.3-32-24.6-2.3-1.8-3.6-2.9-3.7-2.9-1.2-.9-1.5-2.5-1.3-3.6.1-.5.3-1,.3-1.1.1-.2.2-.6.4-1.1.4-1,1.6-2.1,3.2-2.2 0,0,1.8-.1,4.7-.2,10.3-.4,29.2-1,40.4-1.1,3.6-10.6,10-28.3,13.5-38.1.9-2.7,1.7-4.4,1.7-4.4.5-1.4,1.9-2.2,3.1-2.3.4,0,.8,0,1,0h.3c.2,0,.6,0,1,.1,1.1.1,2.5.9,3.1,2.4.2.4.8,2,1.7,4.3,3.5,9.7,9.9,27.5,13.5,38.1,11.2.1,30,.7,40.4,1.1,2.9.1,4.7.2,4.7.2,1.6.1,2.7,1.2,3.2,2.2.2.4.3.9.4,1.1.1.3.2.6.3,1.1.3,1.1,0,2.7-1.3,3.6-.2.2-1.6,1.3-3.6,2.9-8.2,6.4-23.1,17.9-32,24.6,3.3,10.7,8.6,28.8,11.4,38.7.8,2.8,1.2,4.5,1.2,4.5.4,1.5-.3,3-1.1,3.7-.4.3-.7.6-.9.7-.2.2-.5.4-1,.7C156,130.3,155.4,130.5,154.7,130.5z"/>
       </svg>
@@ -1073,6 +1113,17 @@ function rsmSave(){
             <div><label class="sf-l">With</label><input class="sf-i" id="sf-w" placeholder="Friends..."></div>
           </div>
           <button class="btn-ok" onclick="saveR()">Confirm →</button>
+        </div>
+
+        <!-- COMMUNITY JOIN CTA -->
+        <div class="community-cta">
+          <div class="community-stars">★ &nbsp; ★ &nbsp; ★</div>
+          <div class="community-title">Join the Ritual Community</div>
+          <div class="community-sub">Complete 3 rituals · Earn points · Unlock exclusive rewards</div>
+          <button class="btn-community" onclick="go('rit')">
+            Earn Points &amp; Join Now
+            <span class="bc-badge">Free</span>
+          </button>
         </div>
 
         <div class="biz-strip">
