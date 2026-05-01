@@ -4,7 +4,8 @@
 
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Your Heineken</title>
+<title>Heineken Live × Kairo</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><polygon points='24,3 28.5,17 43,17 31,26 35.5,40 24,31.5 12.5,40 17,26 5,17 19.5,17' fill='%23C41E1E'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -221,46 +222,6 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 .sf-i::placeholder{color:rgba(240,237,229,.18)}
 .btn-ok{width:100%;background:rgba(0,122,51,.18);color:var(--bright);padding:.58rem;font-family:'Cormorant Garamond',serif;font-size:.88rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,168,70,.2);transition:background 180ms}
 .btn-ok:hover{background:rgba(0,122,51,.28)}
-
-/* ── COMMUNITY CTA ── */
-.community-cta{
-  margin-top:1.25rem;padding:1.4rem 1.25rem;
-  background:linear-gradient(135deg,rgba(0,80,25,.18) 0%,rgba(0,40,12,.08) 100%);
-  border:1px solid rgba(0,168,70,.22);
-  position:relative;overflow:hidden;
-  animation:fu .5s .45s both;
-  text-align:center;
-}
-.community-cta::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--bright),transparent);
-  opacity:.5;
-}
-.community-stars{
-  font-size:.72rem;letter-spacing:6px;color:var(--bright);
-  margin-bottom:.5rem;opacity:.7;
-}
-.community-title{
-  font-family:var(--serif);font-size:1.35rem;font-weight:300;
-  color:var(--cream);margin-bottom:.3rem;line-height:1.1;
-}
-.community-sub{
-  font-size:.44rem;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--dim);margin-bottom:1rem;line-height:1.8;
-}
-.btn-community{
-  width:100%;background:var(--green);color:#fff;
-  padding:.82rem 1.5rem;font-size:.66rem;font-weight:600;
-  letter-spacing:3px;text-transform:uppercase;border-radius:1px;
-  transition:background 200ms,transform 150ms ease,box-shadow 200ms;
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-}
-.btn-community:hover{background:var(--bright);transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,168,70,.35)}
-.btn-community:active{transform:scale(.98)}
-.btn-community .bc-badge{
-  background:rgba(255,255,255,.15);border-radius:2px;
-  padding:2px 6px;font-size:.48rem;letter-spacing:1px;
-}
 
 .biz-strip{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;animation:fu .5s .5s both}
 .bi{text-align:center}
@@ -678,22 +639,6 @@ dialog#rsm-dialog::backdrop{
   height:100%;background:var(--bright);
   transition:width 600ms ease;
 }
-
-/* header star fix */
-.hdr-star, .hd-star, .nav-star, [class*="star"] svg {
-  vertical-align: middle !important;
-  display: inline-flex !important;
-  align-items: center !important;
-}
-
-dialog#rsm-dialog{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;background:#0a1a0a;border:1px solid rgba(0,179,71,.2);padding:0;max-width:360px;width:92vw;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8)}
-dialog#rsm-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-@keyframes dialog-in{from{opacity:0;transform:translate(-50%,-50%) scale(0.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-dialog#rsm-dialog[open]{animation:dialog-in 0.3s cubic-bezier(0.34,1.2,0.64,1) forwards}
-.rsm-inp{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#F5F2EB;padding:.75rem 1rem;font-size:1rem;font-family:"Cormorant Garamond",Georgia,serif;outline:none;-webkit-appearance:none;box-sizing:border-box;margin-bottom:.6rem;display:block}
-.rsm-btn{width:100%;background:#007A33;color:#fff;border:none;padding:.9rem;font-family:Inter,system-ui,sans-serif;font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:8px;margin-top:.25rem}
-.rsm-dot{width:52px;height:52px;border-radius:50%;border:1px solid rgba(0,179,71,.25);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:all 400ms}
-.rsm-dot.on{background:rgba(0,122,51,.35);border-color:#00A846}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
@@ -779,24 +724,31 @@ function rsmSave(){
 
   <!-- ── S1: HERO PITCH ── -->
   <section class="l-section" id="ls0">
-    <div class="lh-kicker">Heineken × Kairo</div>
+    <div class="lh-kicker">Heineken Live × Kairo</div>
+
     <div id="user-greeting" style="display:none;font-size:.46rem;letter-spacing:3px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:#00A846;background:rgba(0,122,51,.12);border:1px solid rgba(0,179,71,.18);padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem"></div>
+
     <div style="margin-bottom:1.25rem">
       <svg width="48" height="48" viewBox="0 0 48 48" style="display:block;margin:0 auto">
         <polygon points="24,3 28.5,17 43,17 31,26 35.5,40 24,31.5 12.5,40 17,26 5,17 19.5,17" fill="#C41E1E" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-linejoin="round"/>
       </svg>
     </div>
+
     <h1 class="lh-title" id="lh-main">
-      Heineken knows<br>
-      when they <strong>buy.</strong><br>
-      <em style="font-style:italic;color:var(--bright)">Not when they drink.</em>
+      The show starts<br>
+      <strong>before</strong> the<br>
+      <em style="font-style:italic;color:var(--bright)">first sip.</em>
     </h1>
-    <p class="lh-sub">We built what nobody did. The ritual touchpoint that happens while they drink.</p>
+
+    <p class="lh-sub">We digitized the ritual nobody owned. The moment between the wristband tap and the first drink — it's yours now.</p>
+
     <div class="nfc-wrap">
       <div class="nfc-ring"></div><div class="nfc-ring"></div><div class="nfc-ring"></div>
       <div class="nfc-core"><span class="nfc-icon">⬡</span></div>
     </div>
-    <p style="font-size:.46rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.25);font-family:Inter,system-ui;margin-bottom:2.5rem">NFC · No Download · Instant Activation</p>
+
+    <p style="font-size:.46rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.25);font-family:Inter,system-ui;margin-bottom:2.5rem">NFC Wristband · No Download · Live Activation</p>
+
     <div class="scroll-hint">
       <span>Explore the vision</span>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2.5 8l4.5 4 4.5-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -805,96 +757,96 @@ function rsmSave(){
 
   <!-- ── S2: 4 PILLARS ── -->
   <section class="l-section" id="ls1">
-    <div class="l-kicker">What It Does For You</div>
-    <h2 class="l-title">Four outcomes.<br>One complete ritual.</h2>
-    <p class="l-sub" style="margin-bottom:0">Every bottle becomes a direct conversation between Heineken and the consumer.</p>
+    <div class="l-kicker">The Ecosystem</div>
+    <h2 class="l-title">Four pillars.<br>One complete ritual.</h2>
+    <p class="l-sub" style="margin-bottom:0">Every bottle activates a unique, contextual, unrepeatable experience.</p>
     <div class="pillars-grid">
       <div class="pillar">
         <div class="pillar-num">01</div>
         <span class="pillar-icon">◈</span>
-        <div class="pillar-name">First-Party Profiles</div>
-        <div class="pillar-desc">Name, neighborhood, who they drink with, what vibe. Real data from the moment of consumption — not a survey.</div>
+        <div class="pillar-name">Digital Ownership</div>
+        <div class="pillar-desc">Every ritual is a unique coordinate on the global map. Your consumption becomes a digital asset.</div>
       </div>
       <div class="pillar">
         <div class="pillar-num">02</div>
         <span class="pillar-icon">⬡</span>
-        <div class="pillar-name">Brand Experience</div>
-        <div class="pillar-desc">The perfect pour, guided. Every consumer lives the Heineken standard — and remembers it.</div>
+        <div class="pillar-name">Perfect Pour</div>
+        <div class="pillar-desc">Camera + real-time visual AI. The two-finger foam of the Heineken standard, every time.</div>
       </div>
       <div class="pillar">
         <div class="pillar-num">03</div>
         <span class="pillar-icon">◎</span>
-        <div class="pillar-name">Portfolio Discovery</div>
-        <div class="pillar-desc">Context-based AI recommends Original, Silver or 0.0 — expanding your portfolio naturally, without a campaign.</div>
+        <div class="pillar-name">AI Contextual</div>
+        <div class="pillar-desc">Weather, location and moment curate the perfect variant and the ideal 30-minute playlist.</div>
       </div>
       <div class="pillar">
         <div class="pillar-num">04</div>
         <span class="pillar-icon">◉</span>
-        <div class="pillar-name">Retention Loop</div>
-        <div class="pillar-desc">Three rituals unlock a real reward. Consumers come back — and bring the data with them.</div>
+        <div class="pillar-name">Hyper-Local</div>
+        <div class="pillar-desc">Visualize the pulse of active rituals in your city, in real time.</div>
       </div>
     </div>
   </section>
 
   <!-- ── S3: FLOW ── -->
   <section class="l-section" id="ls2">
-    <div class="l-kicker">The Consumer Journey</div>
-    <h2 class="l-title">60 seconds.<br>A complete brand moment.</h2>
+    <div class="l-kicker">The Experience Flow</div>
+    <h2 class="l-title">From the bottle<br>to the complete ritual.</h2>
     <div class="flow-steps">
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">01</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
           <div class="fstep-tag">Touch</div>
-          <div class="fstep-name">One tap on the bottle</div>
-          <div class="fstep-desc">No app. No download. The experience opens instantly — at the exact moment they're about to drink.</div>
-          <span class="fstep-badge">Zero friction · Zero barrier</span>
+          <div class="fstep-name">NFC Activation</div>
+          <div class="fstep-desc">The chip on the bottle opens the experience with zero downloads. Zero friction.</div>
+          <span class="fstep-badge">Zero friction</span>
         </div>
       </div>
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">02</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
           <div class="fstep-tag">Pour</div>
-          <div class="fstep-name">The Heineken standard, lived</div>
-          <div class="fstep-desc">The camera guides the perfect pour in real time. Every consumer experiences what your brand promises.</div>
-          <span class="fstep-badge">Brand consistency at scale</span>
+          <div class="fstep-name">Perfect Pour</div>
+          <div class="fstep-desc">The camera detects foam level in real time. Visual AI signals the exact moment to stop.</div>
+          <span class="fstep-badge">WebRTC · Frame Analysis</span>
         </div>
       </div>
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">03</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
-          <div class="fstep-tag">Personalize</div>
-          <div class="fstep-name">Their Heineken, recommended</div>
-          <div class="fstep-desc">Location, weather, mood and company — detected automatically. Two questions. The right variant, every time.</div>
-          <span class="fstep-badge">Portfolio discovery · No campaign needed</span>
+          <div class="fstep-tag">Experience</div>
+          <div class="fstep-name">Real Context + AI</div>
+          <div class="fstep-desc">Geo, weather and moment auto-detected. Just two questions. AI recommends your ideal Heineken.</div>
+          <span class="fstep-badge">Claude AI · Open-Meteo</span>
         </div>
       </div>
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">04</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
-          <div class="fstep-tag">Retain</div>
-          <div class="fstep-name">A reward they want to earn</div>
-          <div class="fstep-desc">Three rituals = a real Heineken reward. Consumers come back. You keep the data from every moment.</div>
-          <span class="fstep-badge">Retention · First-party data</span>
+          <div class="fstep-tag">Reward</div>
+          <div class="fstep-name">Your Heineken + Reward</div>
+          <div class="fstep-desc">Downloadable Story Card, 30-min playlist. Three rituals completed = voucher for your next pack.</div>
+          <span class="fstep-badge">First-party data · Retention</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── S4: WHAT HEINEKEN GETS ── -->
+  <!-- ── S4: FINAL CTA ── -->
   <section class="fcta-sec" id="ls3">
-    <div class="l-kicker">What Heineken Takes Home</div>
+    <div class="l-kicker">Live Demo</div>
     <h2 class="fcta-title">
-      Every ritual is a profile.<br>
-      <em>Every profile is yours.</em>
+      This is not a concept.<br>
+      <em>It's running right now.</em>
     </h2>
-    <p class="fcta-sub">After each activation, Heineken receives: neighborhood, company, occasion, vibe, variant chosen — and whether they came back.</p>
+    <p class="fcta-sub">Real geolocation, live weather, generative AI, active camera. One single HTML file.</p>
     <div class="fcta-stats">
       <div class="fstat"><div class="fstat-v">+34%</div><div class="fstat-l">Portfolio Discovery</div></div>
-      <div class="fstat"><div class="fstat-v">1:1</div><div class="fstat-l">Consumer Profiles</div></div>
-      <div class="fstat"><div class="fstat-v">3×</div><div class="fstat-l">Retention Per User</div></div>
+      <div class="fstat"><div class="fstat-v">1:1</div><div class="fstat-l">First Party Data</div></div>
+      <div class="fstat"><div class="fstat-v">0</div><div class="fstat-l">Downloads needed</div></div>
     </div>
     <button class="btn-launch" onclick="launchExperience()">Live the Experience</button>
-    <div class="fcta-note">Built by KAIRO · kairoinc.lat</div>
+    <div class="fcta-note">Developed Built by KAIRO · kairoinc.lat</div>
   </section>
 </div><!-- END LANDING -->
 
@@ -902,17 +854,17 @@ function rsmSave(){
 <canvas id="cv"></canvas>
 <div id="dot"></div><div id="ring"></div>
 <div id="toast"></div>
-<div id="credit"><a href="https://kairoinc.lat" target="_blank">Built by KAIRO</a></div>
+<div id="credit"><a href="https://kairoinc.lat" target="_blank">Developed Built by KAIRO</a></div>
 
 <header id="hdr" class="off">
   <div class="hlogo">
     <div class="hstar">
-      <svg width="22" height="22" viewBox="47 0 120 132" xmlns="http://www.w3.org/2000/svg">
+      <svg width="22" height="22" viewBox="0 0 214 221" xmlns="http://www.w3.org/2000/svg">
         <path fill="#E3000F" d="M91.2,79.4L76.6,124.5c0,.1,0,.2.1.2s.1.1.2.2.2.2.2.2c.1,0,.2,0,.2,0l38.3-27.9 38.3,27.9c.1.1.2.1.2,0s.1-.1.2-.2.2-.2.2-.2c.1-.1.1-.1.1-.2L140,79.4l38.4-27.8c.1-.1.1-.1.1-.2s0-.1-.1-.3-.1-.3-.1-.3c0-.1-.1-.1-.2-.1l-47.4.1L116.1,5.6c0-.1-.1-.1-.2-.1s-.1,0-.3,0-.3,0-.3,0c-.1,0-.2.1-.2.1L100.5,50.7l-47.4-.1c-.1,0-.2.1-.2.1s-.1.1-.1.3-.1.3-.1.3c0,.1,0,.2.1.2L91.2,79.4z"/>
         <path fill="rgba(255,255,255,0.15)" d="M154.7,130.5c-.7,0-1.4-.2-2-.6s-1.5-1-3.9-2.6c-6.9-4.6-23.8-16.1-33.3-22.9-9.1,6.5-24.7,17.1-33.3,22.9-2.4,1.6-3.9,2.6-3.9,2.6c-.6.4-1.3.6-2,.6-.7,0-1.3-.2-1.9-.5-.5-.3-.9-.6-1-.7-.2-.1-.5-.3-.9-.7-.8-.7-1.5-2.2-1.1-3.7.4-1.5.4-1.7,1.2-4.5,2.9-9.9,8.1-28,11.5-38.7-9-6.7-23.9-18.3-32-24.6-2.3-1.8-3.6-2.9-3.7-2.9-1.2-.9-1.5-2.5-1.3-3.6.1-.5.3-1,.3-1.1.1-.2.2-.6.4-1.1.4-1,1.6-2.1,3.2-2.2 0,0,1.8-.1,4.7-.2,10.3-.4,29.2-1,40.4-1.1,3.6-10.6,10-28.3,13.5-38.1.9-2.7,1.7-4.4,1.7-4.4.5-1.4,1.9-2.2,3.1-2.3.4,0,.8,0,1,0h.3c.2,0,.6,0,1,.1,1.1.1,2.5.9,3.1,2.4.2.4.8,2,1.7,4.3,3.5,9.7,9.9,27.5,13.5,38.1,11.2.1,30,.7,40.4,1.1,2.9.1,4.7.2,4.7.2,1.6.1,2.7,1.2,3.2,2.2.2.4.3.9.4,1.1.1.3.2.6.3,1.1.3,1.1,0,2.7-1.3,3.6-.2.2-1.6,1.3-3.6,2.9-8.2,6.4-23.1,17.9-32,24.6,3.3,10.7,8.6,28.8,11.4,38.7.8,2.8,1.2,4.5,1.2,4.5.4,1.5-.3,3-1.1,3.7-.4.3-.7.6-.9.7-.2.2-.5.4-1,.7C156,130.3,155.4,130.5,154.7,130.5z"/>
       </svg>
     </div>
-    <span class="hname">Your Heineken</span>
+    <span class="hname">Heineken Live</span>
     <div class="hsep"></div>
     <span class="hby">Built by KAIRO</span>
   </div>
@@ -950,6 +902,8 @@ function rsmSave(){
     </div>
   </div>
 
+  <!-- USER GREETING (URL param) -->
+  <div class="user-greeting" id="user-greeting" style="display:none"></div>
 
 <div id="app">
 
@@ -963,10 +917,10 @@ function rsmSave(){
   <!-- HERO -->
   <div class="pg" id="pg-hero">
     <div class="h-glow"></div>
-    <h1 class="h-title">Open<br><em>your ritual.</em></h1>
-    <p style="font-size:.72rem;letter-spacing:.5px;color:var(--dim);max-width:260px;text-align:center;line-height:1.65;margin-bottom:1.5rem;z-index:2;animation:fu .9s .25s both">Perfect pour. Real context. Your Heineken.</p>
+    <h1 class="h-title">Live<br><em>the ritual.</em></h1>
+    <p style="font-size:.72rem;letter-spacing:.5px;color:var(--dim);max-width:260px;text-align:center;line-height:1.65;margin-bottom:1.5rem;z-index:2;animation:fu .9s .25s both">The show starts before the first sip.</p>
     <div class="h-cta">
-      <button class="btn-main" onclick="startRitual()">Start Your Ritual</button>
+      <button class="btn-main" onclick="startRitual()">Live the Ritual</button>
       <button class="btn-text" onclick="go('rit')">Your Rituals</button>
     </div>
   </div>
@@ -1115,17 +1069,6 @@ function rsmSave(){
           <button class="btn-ok" onclick="saveR()">Confirm →</button>
         </div>
 
-        <!-- COMMUNITY JOIN CTA -->
-        <div class="community-cta">
-          <div class="community-stars">★ &nbsp; ★ &nbsp; ★</div>
-          <div class="community-title">Join the Ritual Community</div>
-          <div class="community-sub">Complete 3 rituals · Earn points · Unlock exclusive rewards</div>
-          <button class="btn-community" onclick="go('rit')">
-            Earn Points &amp; Join Now
-            <span class="bc-badge">Free</span>
-          </button>
-        </div>
-
         <div class="biz-strip">
           <div class="bi"><div class="bi-v">+34%</div><div class="bi-l">Portfolio Discovery</div></div>
           <div class="bi"><div class="bi-v">1:1</div><div class="bi-l">First Party Data</div></div>
@@ -1169,7 +1112,7 @@ function rsmSave(){
   <div id="spotify-modal">
     <div class="sp-icon">🎵</div>
     <div class="sp-title" id="sp-title">Your 30-Min Ritual Mix</div>
-    <div class="sp-sub" id="sp-sub">Curated for your vibe.<br>The perfect soundtrack for a cold Heineken.</div>
+    <div class="sp-sub" id="sp-sub">Curated for your vibe.<br>The soundtrack for this show. Your ritual, your music.</div>
     <div id="sp-tracks"></div>
     <button class="sp-close" onclick="document.getElementById('spotify-modal').classList.remove('on')">✕ Close</button>
   </div>
@@ -1778,195 +1721,99 @@ function drawGlassGuide(c,w,h){
    STORY CARD — Canvas 1080×1920
 ═══════════════════════════════════════ */
 async function generateStoryCard(){
-  toast('Generating...');
-  var W=1080,H=1920;
-  var cv=document.createElement('canvas');
-  cv.width=W;cv.height=H;
-  var c=cv.getContext('2d');
+  toast('Generating card...');
 
-  var pk=(typeof rec!=='undefined'&&rec&&rec.product)||'original';
-  var prodNames={original:'Heineken Original',silver:'Heineken Silver',zero:'Heineken 0.0'};
-  var prodColors={original:'#00A846',silver:'#7FB3D3',zero:'#4B8FD4'};
-  var pName=prodNames[pk]||'Heineken Original';
-  var pColor=prodColors[pk]||'#00A846';
-  var title=(typeof rec!=='undefined'&&rec&&rec.title)||'Your Heineken Ritual';
-  var desc=(typeof rec!=='undefined'&&rec&&rec.description)||'';
+  // Target the result page content
+  const target=document.getElementById('pg-res');
+  if(!target){toast('No result to capture');return}
 
-  // ── BACKGROUND ──
-  var bg=c.createLinearGradient(0,0,0,H);
-  bg.addColorStop(0,'#020b03');
-  bg.addColorStop(0.5,'#040f04');
-  bg.addColorStop(1,'#020802');
-  c.fillStyle=bg;c.fillRect(0,0,W,H);
+  // Temporarily make it full-viewport for capture
+  const prev={
+    pos:target.style.position,
+    top:target.style.top,
+    left:target.style.left,
+    width:target.style.width,
+    height:target.style.height,
+    zIndex:target.style.zIndex,
+    overflow:target.style.overflow,
+    bg:target.style.background,
+  };
 
-  // Top radial glow
-  var g1=c.createRadialGradient(W/2,300,0,W/2,300,700);
-  g1.addColorStop(0,'rgba(0,168,70,0.12)');
-  g1.addColorStop(1,'rgba(0,0,0,0)');
-  c.fillStyle=g1;c.fillRect(0,0,W,H);
+  // Clone approach: capture the .body inner div
+  const body=target.querySelector('.body');
+  const inner=target.querySelector('.wrap');
+  if(!inner){toast('Nothing to capture');return}
 
-  // Bottom radial glow
-  var g2=c.createRadialGradient(W/2,H-200,0,W/2,H-200,500);
-  g2.addColorStop(0,'rgba(0,100,40,0.08)');
-  g2.addColorStop(1,'rgba(0,0,0,0)');
-  c.fillStyle=g2;c.fillRect(0,0,W,H);
+  // Create a styled wrapper for capture
+  const wrapper=document.createElement('div');
+  wrapper.style.cssText=`
+    position:fixed;top:0;left:0;
+    width:390px;height:844px;
+    background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,60,20,0.22),#020802 65%);
+    overflow:hidden;
+    z-index:-1;opacity:0;
+    font-family:'Cormorant Garamond',Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    padding:2rem 1.5rem;
+    display:flex;flex-direction:column;
+    box-sizing:border-box;
+  `;
 
-  // ── TOP GREEN BAR ──
-  c.fillStyle='#007A33';c.fillRect(0,0,W,14);
+  // Build the card content mirroring result screen
+  const pr=rec?PROD[rec.product]?.n:'Heineken Original';
+  const imgSrc=rec?IMGS[rec.product]:IMGS.original;
+  const pills=[];
+  if(ctx.neighborhood||ctx.city) pills.push('📍 '+(ctx.neighborhood||ctx.city));
+  if(ctx.temp)                   pills.push('🌡 '+ctx.temp);
+  if(ctx.timeLabel)              pills.push('🕐 '+ctx.dayLabel+' '+ctx.timeLabel);
 
-  // ── STAR FUNCTION ──
-  function star(cx,cy,r1,r2,col,alpha){
-    c.save();c.globalAlpha=alpha||1;
-    c.translate(cx,cy);c.beginPath();
-    for(var i=0;i<10;i++){
-      var r=i%2===0?r1:r2,a=(i*Math.PI/5)-Math.PI/2;
-      i===0?c.moveTo(r*Math.cos(a),r*Math.sin(a)):c.lineTo(r*Math.cos(a),r*Math.sin(a));
-    }
-    c.closePath();c.fillStyle=col||'#C41E1E';c.fill();c.restore();
-  }
+  wrapper.innerHTML=`
+    <div style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:#00B347;margin-bottom:.75rem;font-family:Inter,system-ui">YOUR HEINEKEN TONIGHT</div>
+    <div style="display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1.25rem">
+      ${pills.map(p=>`<span style="font-size:.42rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,168,70,.28);color:#00B347;padding:3px 9px;font-family:Inter,system-ui">${p}</span>`).join('')}
+    </div>
+    <div style="position:relative;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div style="position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(0,100,30,.28),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <img src="${imgSrc}" style="height:220px;width:auto;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(0,168,70,.4));position:relative;z-index:2;margin-bottom:1rem">
+      <div style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:rgba(0,179,71,.85);font-family:Inter,system-ui;margin-bottom:.5rem">${pr.toUpperCase()}</div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,7vw,2.2rem);font-weight:300;color:#F5F2EB;line-height:1.08;margin-bottom:.65rem;font-style:italic">${rec?rec.title:'Tonight Calls for Original'}</div>
+      <div style="font-size:.85rem;font-weight:300;color:rgba(245,242,235,.45);line-height:1.65;margin-bottom:.75rem;font-family:'Cormorant Garamond',Georgia,serif">${rec?rec.reason:''}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:.28rem;justify-content:center">
+        ${(rec&&rec.tags||[]).map(t=>`<span style="font-size:.38rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,168,70,.22);color:#00B347;padding:3px 7px;font-family:Inter,system-ui">${t}</span>`).join('')}
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(245,242,235,.08);padding-top:.75rem;margin-top:.75rem;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:7px">
+        
+      </div>
+      <span style="font-size:.38rem;letter-spacing:3px;text-transform:uppercase;color:rgba(0,179,71,.5);font-family:Inter,system-ui">BUILT BY KAIRO</span>
+    </div>
+  `;
 
-  // ── HEADER ──
-  star(W/2,120,58,24);
+  document.body.appendChild(wrapper);
+  // Brief wait for images to load
+  await new Promise(r=>setTimeout(r,600));
 
-  c.fillStyle='rgba(245,242,235,0.22)';
-  c.font='500 28px Inter,Arial,sans-serif';
-  c.textAlign='center';
-  c.letterSpacing='8px';
-  c.fillText('HEINEKEN \u00d7 KAIRO',W/2,200);
-
-  // thin line
-  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
-  c.beginPath();c.moveTo(100,230);c.lineTo(W-100,230);c.stroke();
-
-  // ── LARGE PRODUCT STAR (center piece) ──
-  // Big decorative star as bottle replacement
-  star(W/2,H*0.36,190,80,pColor,0.15);
-  star(W/2,H*0.36,160,66,'#C41E1E',0.9);
-
-  // Inner white star
-  star(W/2,H*0.36,58,24,'rgba(255,255,255,0.9)',1);
-
-  // Product color accent ring
-  c.save();
-  c.translate(W/2,H*0.36);
-  c.beginPath();
-  c.arc(0,0,220,0,Math.PI*2);
-  c.strokeStyle=pColor;c.lineWidth=1.5;
-  c.globalAlpha=0.18;c.stroke();
-  c.arc(0,0,235,0,Math.PI*2);
-  c.strokeStyle=pColor;c.lineWidth=0.8;
-  c.globalAlpha=0.08;c.stroke();
-  c.restore();
-
-  // Subtle star pattern in background
-  for(var i=0;i<8;i++){
-    var angle=i*(Math.PI*2/8),rad=300;
-    star(W/2+Math.cos(angle)*rad,H*0.36+Math.sin(angle)*rad,12,5,'rgba(0,168,70,0.12)',1);
-  }
-
-  // ── PRODUCT NAME ──
-  c.fillStyle=pColor;
-  c.font='400 32px Inter,Arial,sans-serif';
-  c.textAlign='center';
-  c.letterSpacing='6px';
-  c.globalAlpha=0.8;
-  c.fillText(pName.toUpperCase(),W/2,H*0.56);
-  c.globalAlpha=1;
-
-  // thin divider
-  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
-  c.beginPath();c.moveTo(W/2-200,H*0.58);c.lineTo(W/2+200,H*0.58);c.stroke();
-
-  // ── TITLE ──
-  c.fillStyle='#F5F2EB';
-  c.textAlign='center';
-  c.letterSpacing='-1px';
-  function drawWrapped(text,y,size,maxW,lh){
-    c.font='300 '+size+'px "Cormorant Garamond",Georgia,serif';
-    var words=text.split(' '),lines=[],line='';
-    for(var i=0;i<words.length;i++){
-      var t=line+words[i]+' ';
-      if(c.measureText(t).width>maxW&&line){lines.push(line.trim());line=words[i]+' ';}
-      else line=t;
-    }
-    lines.push(line.trim());
-    lines.forEach(function(l,i){c.fillText(l,W/2,y+i*lh);});
-    return y+lines.length*lh;
-  }
-  var afterTitle=drawWrapped(title,H*0.62,92,860,106);
-
-  // ── DESCRIPTION ──
-  if(desc){
-    c.font='300 36px "Cormorant Garamond",Georgia,serif';
-    c.fillStyle='rgba(245,242,235,0.42)';c.letterSpacing='0px';
-    afterTitle=drawWrapped(desc.slice(0,120)+(desc.length>120?'...':''),afterTitle+36,36,800,52)+16;
-  }
-
-  // ── CONTEXT PILLS ──
-  var pills=[];
-  if(typeof ctx!=='undefined'){
-    if(ctx.neighborhood||ctx.city)pills.push({icon:'\uD83D\uDCCD',txt:(ctx.neighborhood||ctx.city)});
-    if(ctx.temp)pills.push({icon:'\uD83C\uDF21',txt:String(ctx.temp).replace(/\u00b0C/g,'').replace('C','')+'°C'});
-    if(ctx.weather)pills.push({icon:'\u2600',txt:ctx.weather});
-  }
-  if(typeof ans!=='undefined'){
-    if(ans[0])pills.push({icon:'\uD83D\uDC65',txt:ans[0]});
-    if(ans[1])pills.push({icon:'\u2728',txt:ans[1]});
-  }
-
-  if(pills.length){
-    var pillY=afterTitle+48;
-    c.font='400 26px Inter,Arial,sans-serif';
-    c.letterSpacing='1px';
-    var gap=20,pw=pills.map(function(p){return c.measureText(p.icon+' '+p.txt).width+52;});
-    var totalW=pw.reduce(function(a,b){return a+b+gap;},0)-gap;
-    var px=W/2-totalW/2;
-    pills.forEach(function(p,i){
-      var w=pw[i],txt=p.icon+' '+p.txt;
-      c.strokeStyle='rgba(0,168,70,0.3)';c.lineWidth=1.5;
-      c.fillStyle='rgba(0,168,70,0.06)';
-      c.beginPath();c.roundRect(px,pillY,w,54,27);c.fill();c.stroke();
-      c.fillStyle='rgba(245,242,235,0.55)';
-      c.fillText(txt,px+w/2,pillY+35);
-      px+=w+gap;
+  // Capture with html2canvas at 2x for retina
+  try{
+    const cv=await html2canvas(wrapper,{
+      scale:2.75,
+      useCORS:true,
+      allowTaint:true,
+      backgroundColor:'#020802',
+      width:390,height:844,
+      logging:false,
     });
-  }
-
-  // ── DECORATIVE STARS BOTTOM ──
-  star(W/2-280,H-240,14,6,'rgba(196,30,30,0.3)',1);
-  star(W/2,H-240,10,4,'rgba(196,30,30,0.5)',1);
-  star(W/2+280,H-240,14,6,'rgba(196,30,30,0.3)',1);
-
-  // ── BOTTOM BAR ──
-  c.strokeStyle='rgba(245,242,235,0.07)';c.lineWidth=1;
-  c.beginPath();c.moveTo(100,H-160);c.lineTo(W-100,H-160);c.stroke();
-
-  c.fillStyle='rgba(245,242,235,0.2)';
-  c.font='400 24px Inter,Arial,sans-serif';
-  c.letterSpacing='5px';c.textAlign='center';
-  c.fillText('YOUR HEINEKEN  \u00b7  BUILT BY KAIRO',W/2,H-108);
-
-  // bottom green bar
-  c.fillStyle='#007A33';c.fillRect(0,H-14,W,14);
-
-  // ── RENDER IN NEW TAB ──
-  var dataUrl=cv.toDataURL('image/png',0.96);
-  var nt=window.open('','_blank');
-  if(nt){
-    var d=nt.document;d.open();
-    d.write('<!DOCTYPE html><html><head>');
-    d.write('<meta name=viewport content="width=device-width,initial-scale=1">');
-    d.write('<title>Your Heineken Ritual</title>');
-    d.write('<body style="margin:0;background:#020802;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px;font-family:Inter,sans-serif">');
-    d.write('<img style="max-width:100%;width:min(420px,100%);border-radius:16px;box-shadow:0 40px 80px rgba(0,0,0,.85),0 0 0 1px rgba(0,168,70,.12)" src="'+dataUrl+'">');
-    d.write('<p style="margin-top:18px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,242,235,.28);text-align:center">iOS: hold image \u2192 Save to Photos</p>');
-    d.write('<a style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;background:#007A33;color:#fff;padding:14px 28px;border-radius:2px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;text-decoration:none" href="'+dataUrl+'" download="heineken-ritual.png">\u2193 Save Card</a>');
-    d.write('</'+'body></'+'html>');
-    d.close();
-    toast('Story Card ready \u2605');
-  } else {
-    var a=document.createElement('a');a.href=dataUrl;a.download='heineken-ritual.png';a.click();
-    toast('Saved \u2605');
+    const link=document.createElement('a');
+    link.download='heineken-ritual.png';
+    link.href=cv.toDataURL('image/png',0.95);
+    link.click();
+    toast('Story Card saved ★');
+  }catch(e){
+    console.error(e);
+    toast('Error generating card');
+  }finally{
+    document.body.removeChild(wrapper);
   }
 }
 
@@ -2081,13 +1928,13 @@ startCityPulse();
       if(!u)return;
       var first=u.split(' ')[0];
       var hname=document.querySelector('.hname');
-      if(hname)hname.textContent=first+"'s Heineken";
+      if(hname)hname.textContent=first+"'s Heineken Live";
       var g=document.getElementById('user-greeting');
       if(g){g.textContent='Welcome, '+first;g.style.display='block';}
       var ht=document.querySelector('.h-title');
-      if(ht)ht.innerHTML='The right bottle,<br><em>'+first+'.</em>';
+      if(ht)ht.innerHTML='Live it,<br><em>'+first+'.</em>';
       var lh=document.getElementById('lh-main');
-      if(lh)lh.innerHTML='Heineken knows<br>when they <strong>buy.</strong><br><em style="font-style:italic;color:var(--bright)">Not when they drink, '+first+'.</em>';
+      if(lh)lh.innerHTML=first+', the show starts<br><strong>before</strong> the<br><em style="font-style:italic;color:var(--bright)">first sip.</em>';
     }catch(e){}
   }
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',applyUser);}
@@ -2108,33 +1955,60 @@ window.addEventListener("load",()=>{
 </script>
 
 <dialog id="rsm-dialog">
-  <div style="background:linear-gradient(135deg,#005c1f,#00A846);padding:1.1rem;display:flex;align-items:center;justify-content:center">
-    <svg width="32" height="32" viewBox="0 0 48 48"><polygon points="24,3 28.5,17 43,17 31,26 35.5,40 24,31.5 12.5,40 17,26 5,17 19.5,17" fill="#C41E1E" stroke="rgba(255,255,255,.35)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  <!-- Brand bar top -->
+  <div class="rsm-brand-bar">
+    
   </div>
-  <div style="padding:1.5rem;text-align:center" id="rsm-s1">
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:300;color:#F5F2EB;line-height:1.1;margin-bottom:.25rem">Save this ritual.</h2>
-    <p style="font-size:.65rem;color:rgba(245,242,235,.38);font-family:Inter,system-ui,sans-serif;margin-bottom:1rem;letter-spacing:2px;text-transform:uppercase">Two details to complete the moment</p>
-    <label style="display:block;font-size:.4rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.3);font-family:Inter,system-ui,sans-serif;margin-bottom:.3rem;text-align:left">Place</label>
+
+  <!-- Step 1: form -->
+  <div id="rsm-s1" class="rsm-body">
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;line-height:1.08;margin-bottom:.2rem;color:#F5F2EB">Save this ritual.</h2>
+    <div class="rsm-div"></div>
+    <p style="font-size:.52rem;color:rgba(245,242,235,.35);font-family:Inter,system-ui,sans-serif;margin-bottom:1.2rem;letter-spacing:1.5px;text-transform:uppercase">Two details to complete the moment</p>
+
+    <label class="rsm-lbl">Place</label>
     <input id="sf-p" class="rsm-inp" placeholder="Bar, home, rooftop...">
-    <label style="display:block;font-size:.4rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.3);font-family:Inter,system-ui,sans-serif;margin-bottom:.3rem;text-align:left">With</label>
+
+    <label class="rsm-lbl">With</label>
     <input id="sf-w" class="rsm-inp" placeholder="Friends, partner, solo...">
-    <button class="rsm-btn" onclick="rsmSave()">★ Save Ritual</button>
-    <button onclick="document.getElementById('rsm-dialog').close()" style="display:block;width:100%;margin-top:.5rem;background:none;border:none;color:rgba(245,242,235,.25);font-size:.42rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:Inter,system-ui,sans-serif;padding:.3rem">Cancel</button>
+
+    <button class="rsm-btn" onclick="rsmSave()">★ &nbsp;Save Ritual</button>
+    <button onclick="rsmClose()" style="display:block;width:100%;margin-top:.7rem;background:none;border:none;color:rgba(245,242,235,.22);font-size:.4rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:Inter,system-ui,sans-serif;padding:.3rem;transition:color 180ms" onmouseover="this.style.color='rgba(245,242,235,.5)'" onmouseout="this.style.color='rgba(245,242,235,.22)'">Cancel</button>
   </div>
-  <div style="padding:1.5rem;text-align:center;display:none" id="rsm-s2">
-    <div style="font-size:1.8rem;margin-bottom:.4rem;color:#00A846">★</div>
-    <h2 id="rsm-t" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:300;color:#F5F2EB;line-height:1.1;margin-bottom:.25rem"></h2>
-    <p id="rsm-s" style="font-size:.72rem;color:rgba(245,242,235,.4);font-family:Inter,system-ui,sans-serif;margin-bottom:1.25rem"></p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:.65rem;margin-bottom:.65rem">
-      <div id="rsm-d0" class="rsm-dot"><span style="font-size:.9rem">★</span><span style="font-size:.32rem;letter-spacing:2px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:rgba(245,242,235,.25)">1st</span></div>
-      <span style="color:rgba(245,242,235,.12)">—</span>
-      <div id="rsm-d1" class="rsm-dot"><span style="font-size:.9rem">★</span><span style="font-size:.32rem;letter-spacing:2px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:rgba(245,242,235,.25)">2nd</span></div>
-      <span style="color:rgba(245,242,235,.12)">—</span>
-      <div id="rsm-d2" class="rsm-dot"><span style="font-size:.9rem">★</span><span style="font-size:.32rem;letter-spacing:2px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:rgba(245,242,235,.25)">3rd</span></div>
+
+  <!-- Step 2: progress -->
+  <div id="rsm-s2" class="rsm-body" style="display:none">
+    <div class="rsm-star">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="12,2 14.9,8.6 22,9.3 17,14 18.5,21 12,17.5 5.5,21 7,14 2,9.3 9.1,8.6" fill="#00A846"/>
+      </svg>
     </div>
-    <div id="rsm-p" style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.25);font-family:Inter,system-ui,sans-serif;margin-bottom:1.25rem"></div>
-    <button class="rsm-btn" onclick="document.getElementById('rsm-dialog').close()">Continue</button>
-    <div id="rsm-h" style="margin-top:.5rem;font-size:.42rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,242,235,.15);font-family:Inter,system-ui,sans-serif"></div>
+    <h2 id="rsm-t" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;line-height:1.08;margin-bottom:.2rem;color:#F5F2EB">Ritual saved.</h2>
+    <div class="rsm-div"></div>
+    <p id="rsm-s" style="font-size:.52rem;color:rgba(245,242,235,.38);font-family:Inter,system-ui,sans-serif;margin-bottom:1rem;letter-spacing:1px;line-height:1.7"></p>
+
+    <div class="rsm-progress"><div class="rsm-progress-fill" id="rsm-pfill" style="width:33%"></div></div>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.75rem">
+      <div id="rsm-d0" class="rsm-dot">
+        <span style="font-size:.8rem;line-height:1">★</span>
+        <span style="font-size:.3rem;letter-spacing:2px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:rgba(245,242,235,.25)">1st</span>
+      </div>
+      <span style="color:rgba(245,242,235,.1);font-size:.6rem">—</span>
+      <div id="rsm-d1" class="rsm-dot">
+        <span style="font-size:.8rem;line-height:1">★</span>
+        <span style="font-size:.3rem;letter-spacing:2px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:rgba(245,242,235,.25)">2nd</span>
+      </div>
+      <span style="color:rgba(245,242,235,.1);font-size:.6rem">—</span>
+      <div id="rsm-d2" class="rsm-dot">
+        <span style="font-size:.8rem;line-height:1">★</span>
+        <span style="font-size:.3rem;letter-spacing:2px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:rgba(245,242,235,.25)">3rd</span>
+      </div>
+    </div>
+
+    <div id="rsm-p" style="font-size:.44rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.22);font-family:Inter,system-ui,sans-serif;margin-bottom:1.1rem"></div>
+    <button class="rsm-btn" onclick="rsmClose()">Continue</button>
+    <div id="rsm-h" style="margin-top:.6rem;font-size:.4rem;letter-spacing:2px;text-transform:uppercase;color:var(--bright);font-family:Inter,system-ui,sans-serif;opacity:.7"></div>
   </div>
 </dialog>
 
