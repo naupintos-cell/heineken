@@ -649,6 +649,91 @@ dialog#rsm-dialog::backdrop{
   height:100%;background:var(--bright);
   transition:width 600ms ease;
 }
+
+/* ════════════════════════════════════════
+   FILM SECTION
+════════════════════════════════════════ */
+.film-wrap{
+  width:100%;max-width:640px;
+  display:flex;flex-direction:column;
+  align-items:center;
+  padding:3rem 1.5rem;
+  gap:1rem;
+}
+.film-kicker{
+  font-size:.5rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--bright);font-family:Inter,system-ui,sans-serif;font-weight:500;
+  display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;
+}
+.film-kicker::before,.film-kicker::after{
+  content:'';flex:1;height:1px;
+  background:rgba(200,169,110,.2);max-width:44px;
+}
+.film-video-container{
+  width:100%;
+  aspect-ratio:16/9;
+  position:relative;
+  background:#000;
+  overflow:hidden;
+  /* borde cobre sutil */
+  box-shadow:0 0 0 1px rgba(200,169,110,.12),
+             0 24px 80px rgba(0,0,0,.8);
+}
+/* Play overlay — visible hasta que empiece */
+.film-play-overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(8,8,10,.45);
+  cursor:pointer;
+  transition:background 300ms,opacity 300ms;
+  z-index:3;
+}
+.film-play-overlay.hidden{
+  opacity:0;pointer-events:none;
+}
+.film-play-btn{
+  width:64px;height:64px;border-radius:50%;
+  border:1px solid rgba(200,169,110,.5);
+  background:rgba(8,8,10,.6);
+  display:grid;place-items:center;
+  transition:transform 200ms,border-color 200ms,background 200ms;
+  backdrop-filter:blur(8px);
+}
+.film-play-overlay:hover .film-play-btn{
+  transform:scale(1.08);
+  border-color:var(--bright);
+  background:rgba(139,94,42,.25);
+}
+/* Pause icon (cuando está playing) */
+.film-play-btn.playing svg polygon{
+  /* se reemplaza por JS */
+}
+/* Progress bar — bottom del video */
+.film-progress-wrap{
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:rgba(245,242,235,.08);
+  z-index:4;cursor:pointer;
+}
+.film-progress-bar{
+  height:100%;width:0%;
+  background:var(--bright);
+  transition:width 250ms linear;
+}
+/* Meta row */
+.film-meta{
+  width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2px;
+}
+.film-title{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1rem;font-weight:300;
+  color:var(--cream);letter-spacing:2px;
+}
+.film-dur{
+  font-size:.44rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--dim);font-family:Inter,system-ui,sans-serif;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
@@ -721,6 +806,7 @@ function rsmSave(){
 
   <div class="scroll-dots" id="sdots">
     <div class="sdot on"></div>
+    <div class="sdot"></div>
     <div class="sdot"></div>
     <div class="sdot"></div>
     <div class="sdot"></div>
@@ -837,7 +923,40 @@ function rsmSave(){
     </div>
   </section>
 
-  <!-- S4: FINAL CTA -->
+  <!-- S4: COMERCIAL -->
+  <section class="l-section" id="ls-film" style="padding:0;background:#000;min-height:100svh;justify-content:center;scroll-snap-align:start">
+    <div class="film-wrap">
+      <div class="film-kicker">The Film</div>
+      <div class="film-video-container">
+        <video
+          id="cero-film"
+          src="CERO.mp4"
+          playsinline
+          preload="metadata"
+          poster=""
+          style="width:100%;height:100%;object-fit:cover;display:block"
+        ></video>
+        <!-- Play button overlay -->
+        <div class="film-play-overlay" id="film-play-overlay" onclick="toggleFilm()">
+          <div class="film-play-btn" id="film-play-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <polygon points="5,3 19,12 5,21" fill="#C8A96E"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Progress bar -->
+        <div class="film-progress-wrap" id="film-progress-wrap">
+          <div class="film-progress-bar" id="film-progress-bar"></div>
+        </div>
+      </div>
+      <div class="film-meta">
+        <span class="film-title">CERO° Live</span>
+        <span class="film-dur" id="film-dur">0:35</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: FINAL CTA -->
   <section class="fcta-sec" id="ls3">
     <div class="l-kicker">Live Demo</div>
     <h2 class="fcta-title">
@@ -1900,6 +2019,93 @@ startCityPulse();
   setTimeout(applyUser,150);
 })();
 
+
+/* ════════════════════════════════════════
+   FILM PLAYER
+════════════════════════════════════════ */
+(function(){
+  const video=document.getElementById('cero-film');
+  const overlay=document.getElementById('film-play-overlay');
+  const playBtn=document.getElementById('film-play-btn');
+  const progressBar=document.getElementById('film-progress-bar');
+  const progressWrap=document.getElementById('film-progress-wrap');
+  const durEl=document.getElementById('film-dur');
+  if(!video)return;
+
+  function fmt(s){
+    const m=Math.floor(s/60),sec=Math.floor(s%60);
+    return m+':'+(sec<10?'0':'')+sec;
+  }
+
+  // Update duration once metadata loads
+  video.addEventListener('loadedmetadata',()=>{
+    if(video.duration&&isFinite(video.duration))
+      durEl.textContent=fmt(video.duration);
+  });
+
+  // Progress update
+  video.addEventListener('timeupdate',()=>{
+    if(!video.duration)return;
+    const pct=(video.currentTime/video.duration)*100;
+    progressBar.style.width=pct+'%';
+    durEl.textContent=fmt(video.currentTime)+' / '+fmt(video.duration);
+  });
+
+  // Ended — reset
+  video.addEventListener('ended',()=>{
+    overlay.classList.remove('hidden');
+    playBtn.classList.remove('playing');
+    playBtn.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="#C8A96E"/></svg>';
+    progressBar.style.width='0%';
+    video.currentTime=0;
+  });
+
+  // Scrub on progress bar click
+  progressWrap.addEventListener('click',e=>{
+    if(!video.duration)return;
+    const rect=progressWrap.getBoundingClientRect();
+    const pct=(e.clientX-rect.left)/rect.width;
+    video.currentTime=pct*video.duration;
+  });
+
+  // Intersection Observer — autoplay when 60% visible, pause when leaving
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.intersectionRatio>=0.6&&video.paused){
+        video.play().then(()=>{
+          overlay.classList.add('hidden');
+          playBtn.classList.add('playing');
+          playBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="4" height="18" fill="#C8A96E"/><rect x="15" y="3" width="4" height="18" fill="#C8A96E"/></svg>';
+        }).catch(()=>{});
+      } else if(entry.intersectionRatio<0.3&&!video.paused){
+        video.pause();
+        overlay.classList.remove('hidden');
+        playBtn.classList.remove('playing');
+        playBtn.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="#C8A96E"/></svg>';
+      }
+    });
+  },{threshold:[0.3,0.6]});
+  observer.observe(video);
+})();
+
+function toggleFilm(){
+  const video=document.getElementById('cero-film');
+  const overlay=document.getElementById('film-play-overlay');
+  const playBtn=document.getElementById('film-play-btn');
+  if(!video)return;
+  if(video.paused){
+    video.play().then(()=>{
+      overlay.classList.add('hidden');
+      playBtn.classList.add('playing');
+      playBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="4" height="18" fill="#C8A96E"/><rect x="15" y="3" width="4" height="18" fill="#C8A96E"/></svg>';
+    }).catch(()=>{});
+  } else {
+    video.pause();
+    overlay.classList.remove('hidden');
+    playBtn.classList.remove('playing');
+    playBtn.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="#C8A96E"/></svg>';
+  }
+}
 
 /* ── INIT ── */
 window.addEventListener("load",()=>{
