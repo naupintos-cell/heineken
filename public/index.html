@@ -89,7 +89,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 
 .btn-main{background:var(--green);color:#ffffff;padding:.85rem 2.5rem;font-size:.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;border-radius:1px;transition:background 200ms,transform 150ms ease,box-shadow 200ms}
 .btn-main:active{transform:scale(.98)}
-@media(hover:hover){.btn-main:hover{background:#00A846;transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,168,70,.35)}}
+@media(hover:hover){.btn-main:hover{background:var(--hover-copper);transform:translateY(-1px);box-shadow:0 8px 28px rgba(139,94,42,.35)}}
 .btn-text{font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:.4rem;transition:color 200ms}
 .btn-text:hover{color:var(--cream)}
 
@@ -181,7 +181,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 
 .btn-nxt{background:var(--green);color:#ffffff;padding:.72rem 1.75rem;font-size:.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;border-radius:1px;transition:background 180ms,transform 150ms ease,box-shadow 180ms;float:right}
 .btn-nxt:active{transform:scale(.98)}
-@media(hover:hover){.btn-nxt:hover{background:#00A846;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,168,70,.3)}}
+@media(hover:hover){.btn-nxt:hover{background:var(--hover-copper);transform:translateY(-1px);box-shadow:0 6px 20px rgba(139,94,42,.3)}}
 
 /* ── AI ── */
 #pg-ai{background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem}
@@ -210,7 +210,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 .res-acts{display:flex;flex-direction:column;gap:.35rem;animation:fu .5s .4s both}
 .btn-save{background:var(--green);color:var(--cream);padding:.78rem;font-family:'Cormorant Garamond',serif;font-size:.92rem;font-weight:400;letter-spacing:2px;text-transform:uppercase;border-radius:1px;text-align:center;transition:background 180ms,transform 150ms ease}
 .btn-save:active{transform:scale(.98)}
-@media(hover:hover){.btn-save:hover{background:#00A846;transform:translateY(-1px)}}
+@media(hover:hover){.btn-save:hover{background:var(--hover-copper);transform:translateY(-1px)}}
 .btn-alt{text-align:center;font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:.42rem;border:1px solid var(--line);transition:color 180ms,border-color 180ms}
 .btn-alt:hover{color:var(--cream);border-color:rgba(240,237,229,.18)}
 .sf{display:none;margin-top:.55rem;border:1px solid var(--line);padding:.85rem;animation:fu .3s ease both}
@@ -517,7 +517,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
   transition:background 200ms,transform 150ms ease,box-shadow 200ms;
 }
 .btn-launch:active{transform:scale(.98)}
-@media(hover:hover){.btn-launch:hover{background:#00A846;transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,168,70,.4)}}
+@media(hover:hover){.btn-launch:hover{background:var(--hover-copper);transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,94,42,.4)}}
 .fcta-note{margin-top:.85rem;font-size:.44rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,242,235,.18);font-family:Inter,system-ui,sans-serif}
 
 /* scroll dots */
@@ -621,7 +621,7 @@ dialog#rsm-dialog::backdrop{
   margin-top:.2rem;
   transition:background 180ms;
 }
-@media(hover:hover){.rsm-btn:hover{background:#00A846}}
+@media(hover:hover){.rsm-btn:hover{background:var(--hover-copper)}}
 .rsm-dot{
   width:46px;height:46px;border-radius:50%;
   border:1px solid rgba(200,169,110,.25);
@@ -729,8 +729,8 @@ function rsmSave(){
     <div id="user-greeting" style="display:none;font-size:.46rem;letter-spacing:3px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:#C8A96E;background:rgba(139,94,42,.12);border:1px solid rgba(200,169,110,.18);padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem"></div>
 
     <div style="margin-bottom:1.25rem">
-      <svg width="48" height="48" viewBox="0 0 48 48" style="display:block;margin:0 auto">
-        <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#C8A96E">°</text>
+      <svg width="48" height="48" viewBox="0 0 48 48" style="display:block;margin:0 auto;filter:drop-shadow(0 0 12px rgba(200,169,110,.4))">
+        <path fill="#C8A96E" d="M24 6a18 18 0 1 0 12.73 30.73A14 14 0 1 1 24 6z"/>
       </svg>
     </div>
 
@@ -771,7 +771,7 @@ function rsmSave(){
         <video
           id="cero-film"
           src="CERO.mp4"
-          poster="CERO-thumb.jpg"
+          poster="CERO-thumb.png"
           playsinline
           preload="metadata"
           style="width:100%;height:100%;object-fit:cover;display:block"
@@ -907,7 +907,7 @@ function rsmSave(){
       <div class="fstat"><div class="fstat-v">0</div><div class="fstat-l">Downloads needed</div></div>
     </div>
     <button class="btn-launch" onclick="launchExperience()">Live the Experience</button>
-    <div class="fcta-note">Developed Built by KAIRO · kairoinc.lat</div>
+    <div class="fcta-note">Built by KAIRO · kairoinc.lat</div>
   </section>
 </div><!-- END LANDING -->
 
@@ -915,7 +915,7 @@ function rsmSave(){
 <canvas id="cv"></canvas>
 <div id="dot"></div><div id="ring"></div>
 <div id="toast"></div>
-<div id="credit"><a href="https://kairoinc.lat" target="_blank">Developed Built by KAIRO</a></div>
+<div id="credit"><a href="https://kairoinc.lat" target="_blank">Built by KAIRO</a></div>
 
 <header id="hdr" class="off">
   <div class="hlogo">
@@ -977,6 +977,13 @@ function rsmSave(){
   <!-- HERO -->
   <div class="pg" id="pg-hero">
     <div class="h-glow"></div>
+
+    <!-- Botella CERO° flotando -->
+    <div class="h-bottle">
+      <img id="h-img" src="img/original.png" alt="CERO° 8"
+           onerror="this.style.display='none'">
+    </div>
+
     <h1 class="h-title">Live<br><em>the ritual.</em></h1>
     <p style="font-size:.72rem;letter-spacing:.5px;color:var(--dim);max-width:260px;text-align:center;line-height:1.65;margin-bottom:1.5rem;z-index:2;animation:fu .9s .25s both">The show starts before the first sip.</p>
     <div class="h-cta">
