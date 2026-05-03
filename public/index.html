@@ -117,6 +117,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45}
 @keyframes orb-ring{0%{transform:scale(.8);opacity:0}50%{opacity:1}100%{transform:scale(1.2);opacity:0}}
 
 .scan-icon{font-size:2rem;animation:scan-pulse 1.5s ease-in-out infinite}
+@keyframes scan-heart{0%,100%{transform:scale(1);filter:drop-shadow(0 0 4px rgba(200,169,110,.4))}25%{transform:scale(1.08);filter:drop-shadow(0 0 8px rgba(200,169,110,.7))}40%{transform:scale(1)}55%{transform:scale(1.04);filter:drop-shadow(0 0 6px rgba(200,169,110,.55))}}
 @keyframes scan-pulse{0%,100%{opacity:.6}50%{opacity:1}}
 
 .scan-steps{width:100%;max-width:280px}
@@ -646,8 +647,8 @@ dialog#rsm-dialog::backdrop{
 const GLASS_IMG='/img/glass.png';
 const REWARD_SUB='/img/sub.png';
 const REWARD_KEG='/img/keg.png';
-const IMGS={original:'/img/original.png',silver:'/img/silver.png',zero:'/img/zero.png'};
-const PROD={original:{n:'CERO° 8',color:'#C8A96E'},silver:{n:'CERO° 0',color:'#A8B8C4'},zero:{n:'CERO° 16',color:'#A06830'}};
+const IMGS={original:'/img/original.png',silver:'/img/silver.png',dieciseis:'/img/dieciseis.png'};
+const PROD={original:{n:'CERO° 8',color:'#C8A96E'},silver:{n:'CERO° 0',color:'#A8B8C4'},dieciseis:{n:'CERO° 16',color:'#A06830'}};
 
 
 
@@ -720,38 +721,40 @@ function rsmSave(){
     <div class="sdot"></div>
     <div class="sdot"></div>
     <div class="sdot"></div>
+    <div class="sdot"></div>
+    <div class="sdot"></div>
+    <div class="sdot"></div>
   </div>
 
   <!-- ── S1: HERO PITCH ── -->
   <section class="l-section" id="ls0">
-    <div class="lh-kicker">CERO° Live × Kairo</div>
+    <div class="lh-kicker">CERO°</div>
 
     <div id="user-greeting" style="display:none;font-size:.46rem;letter-spacing:3px;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;color:#C8A96E;background:rgba(139,94,42,.12);border:1px solid rgba(200,169,110,.18);padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem"></div>
 
-    <div style="margin-bottom:1.25rem">
-      <svg width="48" height="48" viewBox="0 0 48 48" style="display:block;margin:0 auto;filter:drop-shadow(0 0 12px rgba(200,169,110,.4))">
-        <path fill="#C8A96E" d="M24 6a18 18 0 1 0 12.73 30.73A14 14 0 1 1 24 6z"/>
+    <div style="margin-bottom:2rem">
+      <svg width="56" height="56" viewBox="0 0 56 56" style="display:block;margin:0 auto;filter:drop-shadow(0 0 16px rgba(200,169,110,.45))">
+        <path fill="#C8A96E" d="M28 7a21 21 0 1 0 14.85 35.85A16.3 16.3 0 1 1 28 7z"/>
       </svg>
     </div>
 
-    <h1 class="lh-title" id="lh-main">
-      The show starts<br>
-      <strong>before</strong> the<br>
-      <em style="font-style:italic;color:var(--bright)">first sip.</em>
+    <h1 class="lh-title" id="lh-main" style="margin-bottom:.5rem">
+      Find your<br><em style="font-style:italic;color:var(--bright)">absolute CERO°.</em>
     </h1>
 
-    <p class="lh-sub">We digitized the ritual nobody owned. The moment between the wristband tap and the first drink — it's yours now.</p>
+    <p class="lh-sub" style="max-width:280px;font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;color:rgba(232,228,220,.45)">
+      Three seconds before the first sip.<br>The silence within the chaos.
+    </p>
 
-    <div class="nfc-wrap">
+    <div class="nfc-wrap" style="margin-top:1.5rem">
       <div class="nfc-ring"></div><div class="nfc-ring"></div><div class="nfc-ring"></div>
       <div class="nfc-core"><span class="nfc-icon">⬡</span></div>
     </div>
 
-    <p style="font-size:.46rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,235,.25);font-family:Inter,system-ui;margin-bottom:2.5rem">NFC Wristband · No Download · Live Activation</p>
+    <p style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:rgba(245,242,235,.22);font-family:Inter,system-ui;margin-bottom:2.5rem">Tap · Pour · Disappear</p>
 
     <div class="scroll-hint">
-      <span>Explore the vision</span>
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2.5 8l4.5 4 4.5-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>↓</span>
     </div>
   </section>
 
@@ -816,98 +819,112 @@ function rsmSave(){
     </div>
   </section>
 
-  <!-- ── S2: 4 PILLARS ── -->
+  <!-- ── S2: MANIFESTO ── -->
+  <section class="l-section" id="ls-manifesto" style="scroll-snap-align:start">
+    <div class="l-kicker">Manifesto</div>
+    <div style="max-width:480px;margin:0 auto;text-align:left;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;line-height:1.5">
+      <p style="font-size:clamp(1.4rem,3.5vw,1.9rem);color:var(--cream);margin-bottom:1.75rem">The show doesn't start with the first chord.</p>
+      <p style="font-size:clamp(1.4rem,3.5vw,1.9rem);color:var(--cream);margin-bottom:1.75rem">It starts three seconds before — when the glass meets the lips and the world goes quiet.</p>
+      <p style="font-size:clamp(1.4rem,3.5vw,1.9rem);color:var(--bright);font-style:italic">Nobody captured that.<br>Until now.</p>
+    </div>
+  </section>
+
+  <!-- ── S3: 4 PILLARS ── -->
   <section class="l-section" id="ls1">
-    <div class="l-kicker">The Ecosystem</div>
-    <h2 class="l-title">Four pillars.<br>One complete ritual.</h2>
-    <p class="l-sub" style="margin-bottom:0">Every wristband tap activates a unique, contextual, unrepeatable experience.</p>
+    <div class="l-kicker">The Four Gestures</div>
+    <h2 class="l-title" style="margin-bottom:2rem">Cuatro gestos.<br><em style="color:var(--bright);font-style:italic">Un ritual.</em></h2>
     <div class="pillars-grid">
       <div class="pillar">
-        <div class="pillar-num">01</div>
+        <div class="pillar-num">01 · Awakening</div>
         <span class="pillar-icon">◈</span>
-        <div class="pillar-name">Digital Ownership</div>
-        <div class="pillar-desc">Every ritual is a unique coordinate. Your consumption becomes your own data.</div>
+        <div class="pillar-name">NFC</div>
+        <div class="pillar-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.85rem">The tap doesn't switch.<br>It recognises.</div>
       </div>
       <div class="pillar">
-        <div class="pillar-num">02</div>
+        <div class="pillar-num">02 · Calibration</div>
         <span class="pillar-icon">⬡</span>
         <div class="pillar-name">Perfect Pour</div>
-        <div class="pillar-desc">Camera + real-time visual AI. The two-finger foam of the CERO° standard, every time.</div>
+        <div class="pillar-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.85rem">Foam is not measured.<br>It is obeyed.</div>
       </div>
       <div class="pillar">
-        <div class="pillar-num">03</div>
+        <div class="pillar-num">03 · Atmospheric Soul</div>
         <span class="pillar-icon">◎</span>
-        <div class="pillar-name">AI Contextual</div>
-        <div class="pillar-desc">Weather, location and moment curate the perfect variant and the ideal 30-minute playlist.</div>
+        <div class="pillar-name">Contextual AI</div>
+        <div class="pillar-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.85rem">The air already chose<br>for you.</div>
       </div>
       <div class="pillar">
-        <div class="pillar-num">04</div>
+        <div class="pillar-num">04 · Permanent Echo</div>
         <span class="pillar-icon">◉</span>
-        <div class="pillar-name">Hyper-Local</div>
-        <div class="pillar-desc">Visualize the pulse of active rituals in your city, in real time.</div>
+        <div class="pillar-name">Digital Legacy</div>
+        <div class="pillar-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.85rem">You were there.<br>That remains.</div>
       </div>
     </div>
   </section>
 
-  <!-- ── S3: FLOW ── -->
+  <!-- ── S4: BORING MODE ── -->
+  <section class="l-section" id="ls-boring" style="scroll-snap-align:start">
+    <div class="l-kicker">Boring Mode</div>
+    <h2 class="l-title" style="margin-bottom:1.5rem">
+      <em style="font-style:italic;color:var(--cream)">Fifteen seconds.</em><br><em style="font-style:italic;color:var(--bright)">Then, darkness.</em>
+    </h2>
+    <p class="l-sub" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;max-width:300px">
+      The show doesn't need digital witnesses.<br>It needs witnesses.
+    </p>
+  </section>
+
+  <!-- ── FLOW ── -->
   <section class="l-section" id="ls2">
-    <div class="l-kicker">The Experience Flow</div>
-    <h2 class="l-title">From the bottle<br>to the complete ritual.</h2>
+    <div class="l-kicker">The Ritual</div>
+    <h2 class="l-title" style="margin-bottom:2rem">
+      <em style="color:var(--cream);font-style:italic">From the wristband</em><br><em style="color:var(--bright);font-style:italic">to the silence.</em>
+    </h2>
     <div class="flow-steps">
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">01</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
           <div class="fstep-tag">Touch</div>
-          <div class="fstep-name">NFC Activation</div>
-          <div class="fstep-desc">The NFC wristband opens the experience with zero downloads. Zero friction.</div>
-          <span class="fstep-badge">Zero friction</span>
+          <div class="fstep-name">Awakening</div>
+          <div class="fstep-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem">The tap doesn't open an app. It opens a silence.</div>
         </div>
       </div>
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">02</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
           <div class="fstep-tag">Pour</div>
-          <div class="fstep-name">Perfect Pour</div>
-          <div class="fstep-desc">The camera detects foam level in real time. Visual AI signals the exact moment to stop.</div>
-          <span class="fstep-badge">WebRTC · Frame Analysis</span>
+          <div class="fstep-name">Calibration</div>
+          <div class="fstep-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem">The camera watches. The AI listens. The foam decides.</div>
         </div>
       </div>
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">03</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
-          <div class="fstep-tag">Experience</div>
-          <div class="fstep-name">Real Context + AI</div>
-          <div class="fstep-desc">Geo, weather and moment auto-detected. Just two questions. AI recommends your ideal CERO°.</div>
-          <span class="fstep-badge">Claude AI · Open-Meteo</span>
+          <div class="fstep-tag">Read</div>
+          <div class="fstep-name">Atmospheric Soul</div>
+          <div class="fstep-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem">Weather is not data. It is the mood of the air.</div>
         </div>
       </div>
       <div class="fstep">
         <div class="fstep-l"><div class="fstep-num">04</div><div class="fstep-conn"></div></div>
         <div class="fstep-r">
-          <div class="fstep-tag">Reward</div>
-          <div class="fstep-name">Tu CERO° + Reward</div>
-          <div class="fstep-desc">Downloadable Story Card, 30-min playlist. Three rituals = tickets for your next show.</div>
-          <span class="fstep-badge">First-party data · Retention</span>
+          <div class="fstep-tag">Echo</div>
+          <div class="fstep-name">Permanent Echo</div>
+          <div class="fstep-desc" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem">You were present while everyone else was filming.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── S4: FINAL CTA ── -->
+  <!-- ── FINAL CTA ── -->
   <section class="fcta-sec" id="ls3">
-    <div class="l-kicker">Live Demo</div>
-    <h2 class="fcta-title">
-      This is not a concept.<br>
-      <em>It's running right now.</em>
+    <div class="l-kicker">Live</div>
+    <h2 class="fcta-title" style="margin-bottom:1.25rem">
+      <em style="font-style:italic;color:var(--cream)">This is not a concept.</em><br><em style="color:var(--bright);font-style:italic">It's running now.</em>
     </h2>
-    <p class="fcta-sub">Real geolocation, live weather, generative AI, active camera. One single HTML file.</p>
-    <div class="fcta-stats">
-      <div class="fstat"><div class="fstat-v">+34%</div><div class="fstat-l">Rituals descubiertos</div></div>
-      <div class="fstat"><div class="fstat-v">1:1</div><div class="fstat-l">First Party Data</div></div>
-      <div class="fstat"><div class="fstat-v">0</div><div class="fstat-l">Downloads needed</div></div>
-    </div>
-    <button class="btn-launch" onclick="launchExperience()">Live the Experience</button>
-    <div class="fcta-note">Built by KAIRO · kairoinc.lat</div>
+    <p class="fcta-sub" style="font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem">
+      Three seconds before the first sip.<br>Fifteen seconds after.<br>That is all.
+    </p>
+    <button class="btn-launch" onclick="launchExperience()">Find your CERO°</button>
+    <div class="fcta-note" style="margin-top:1.5rem">Built by KAIRO · kairoinc.lat</div>
   </section>
 </div><!-- END LANDING -->
 
@@ -995,24 +1012,27 @@ function rsmSave(){
   <!-- SCAN (geo + weather) -->
   <div class="pg" id="pg-scan">
     <div class="scan-orb">
-      <span class="scan-icon">📡</span>
+      <svg width="32" height="32" viewBox="0 0 32 32" style="animation:scan-heart 1.4s ease-in-out infinite">
+        <circle cx="16" cy="16" r="3" fill="#C8A96E"/>
+        <circle cx="16" cy="16" r="7" fill="none" stroke="#C8A96E" stroke-width=".6" opacity=".5"/>
+      </svg>
     </div>
     <div class="scan-steps" id="scan-steps">
       <div class="scan-step" id="ss0">
         <div class="ss-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="ss-label">Detecting location</div>
+        <div class="ss-label">Awakening · Reading coordinates</div>
         <div class="ss-val" id="sv0"></div>
         <div class="ss-dot" id="sd0"></div>
       </div>
       <div class="scan-step" id="ss1">
         <div class="ss-icon"><svg viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg></div>
-        <div class="ss-label">Reading weather</div>
+        <div class="ss-label">Calibration · Sensing the air</div>
         <div class="ss-val" id="sv1"></div>
         <div class="ss-dot" id="sd1"></div>
       </div>
       <div class="scan-step" id="ss2">
         <div class="ss-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="ss-label">Analyzing your moment</div>
+        <div class="ss-label">Atmospheric Soul · Composing the moment</div>
         <div class="ss-val" id="sv2"></div>
         <div class="ss-dot" id="sd2"></div>
       </div>
@@ -1092,7 +1112,7 @@ function rsmSave(){
           </div>
         </div>
 
-        <button class="btn-nxt" onclick="discover()">Descubrir mi CERO°</button>
+        <button class="btn-nxt" onclick="discover()">Discover my CERO°</button>
         <div style="clear:both"></div>
       </div>
     </div>
@@ -1137,7 +1157,7 @@ function rsmSave(){
         </div>
 
         <div class="biz-strip">
-          <div class="bi"><div class="bi-v">+34%</div><div class="bi-l">Rituals descubiertos</div></div>
+          <div class="bi"><div class="bi-v">+34%</div><div class="bi-l">Rituals Uncovered</div></div>
           <div class="bi"><div class="bi-v">1:1</div><div class="bi-l">First Party Data</div></div>
           <div class="bi"><div class="bi-v">∞</div><div class="bi-l">Show to Show Retention</div></div>
         </div>
@@ -1361,7 +1381,16 @@ async function startScan(){
 
   ctx.neighborhood=neighborhood;ctx.city=city;ctx.country=country;
   const locDisplay=neighborhood||(city)||"Your location";
-  setDone(0,locDisplay);
+
+  // Atmospheric reading — not just confirmation
+  const atmosphericReadings=[
+    `${locDisplay}. The air carries the right weight.`,
+    `${locDisplay} detected. A CERO° moment is forming.`,
+    `${locDisplay}. The coordinates align.`,
+    `${locDisplay}. The night recognises you.`
+  ];
+  const reading=atmosphericReadings[Math.floor(Math.random()*atmosphericReadings.length)];
+  setDone(0,reading);
   await delay(300);
 
   // Step 1: Weather
@@ -1460,21 +1489,43 @@ async function discover(){
   else if(tempNum>=15)tempCtx="cool night";
   else tempCtx="cold conditions";
 
-  const prompt=`You are experto en cervezas premium y cultura de festivales. La marca es CERO° Live, una cerveza argentina premium con tres variantes: CERO° 8 (lager ambar, momento equilibrado), CERO° 0 (lager clara, calor y energía), CERO° 16 (amber ale, noche fría o íntima).
+  const prompt=`You are the Atmospheric Sommelier of CERO°. You do not sell beer. You translate weather, geography and human company into sensory notes — the way a master perfumer reads air.
 
-REAL-TIME CONTEXT (auto-detected):
-- Location: ${loc}${ctx.country?" ("+ctx.country+")":""}
-- Temperature: ${ctx.temp} — ${ctx.weather}
-- Moment: ${ctx.dayLabel} ${ctx.timeLabel}
+CERO° is not a brand. It is the silence three seconds before the first sip. Your task is to validate that silence in 25 words or less.
 
-USER INPUT:
+THREE EXPRESSIONS:
+- CERO° 8 — amber. The gravitational center. For balanced moments.
+- CERO° 0 — pale gold. Heat and clarity. For warm intensity.
+- CERO° 16 — deep copper. Late hour, cold edge, intimate weight.
+
+ATMOSPHERIC INPUT:
+- Coordinate: ${loc}
+- Air: ${ctx.temp} · ${ctx.weather}
+- Hour: ${ctx.dayLabel} ${ctx.timeLabel}
 - Company: ${ans[0]}
-- Vibe: ${ans[1]}
+- Pulse: ${ans[1]}
 
-RULES: "Balanced" vibe → zero always. "Wild"/"Celebrating" + hot/warm weather → original. "Relaxed" + Partner/Solo + cool/cold → silver. Curious → silver. Friday Night/Weekend + Friends → lean original.
+RULES OF CALIBRATION:
+- "Balanced" pulse → dieciseis (the conscious choice).
+- "Wild" or "Celebrating" + warm air → original.
+- "Relaxed" + Partner or Solo + cool air → silver.
+- "Curious" → silver (exploration favours clarity).
+- Friday Night or Weekend + Friends → original leans forward.
 
-Respond ONLY valid JSON, no backticks, no extra text:
-{"product":"original"|"silver"|"zero","title":"4-6 words, poetic, includes the city or moment","reason":"1-2 sentences. Reference the actual location, weather or time. Sound like a sommelier, not a marketer.","tags":["a","b","c"]}`;
+VOICE — read carefully:
+- British minimalism. Short sentences that land like bass.
+- Liquid metaphors only: foam, amber, condensation, glass, copper, ice.
+- Reference the neighbourhood by name (Palermo, Vicente López, Recoleta...). Never the country.
+- Forbidden words: zero (use CERO°), innovation, revolutionary, platform, solution, perfect, amazing.
+- 10% rareza: every line should feel slightly translated from another language. Make the reader pause.
+
+EXAMPLES OF VOICE:
+"Vicente López. The air carries metallic weight. A dense foam is your only architecture tonight."
+"Palermo at golden hour. The street hums in copper. CERO° finds the gap between two songs."
+"Recoleta. Cold glass against warmer skin. The night has not yet decided what it wants."
+
+Respond ONLY valid JSON, no backticks:
+{"product":"original"|"silver"|"dieciseis","title":"4-6 words. Poetic. Must include the neighbourhood OR a sensory cue","reason":"Maximum 25 words. An atmospheric tasting note. Validate the CERO° moment.","tags":["3","short","concepts"]}`;
 
   try{
     const r=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},
@@ -1483,13 +1534,13 @@ Respond ONLY valid JSON, no backticks, no extra text:
     rec=JSON.parse(d.content[0].text.replace(/```json|```/g,"").trim());
   }catch{
     let p="original";
-    if(ans[1]==="Balanced")p="zero";
+    if(ans[1]==="Balanced")p="dieciseis";
     else if((ans[1]==="Relaxed")&&(ans[0]==="Partner"||ans[0]==="Solo"))p="silver";
     else if(ans[1]==="Curious")p="silver";
     const nb2=ctx.neighborhood||ctx.city||"tonight";
-    const T={original:`${nb2} Calls for Original`,silver:`${nb2} Is a Silver Night`,zero:"Present. Fully."};
-    const R={original:`The ${ctx.timeLabel.toLowerCase()} energy in ${nb2} says it all. Bold, social, alive.`,silver:`Something about ${nb2} at ${ctx.temp} asks for something smoother.`,zero:`Full presence tonight. The ritual stays — the alcohol doesn't need to.`};
-    rec={product:p,title:T[p],reason:R[p],tags:{original:["Social Energy",ctx.dayLabel,"Classic Night"],silver:["Silver Hour",ctx.weather||"Smooth","Intimate Vibe"],zero:["Balanced","Fully Present","Ritual Intact"]}[p]};
+    const T={original:`${nb2}. The amber answer.`,silver:`${nb2} in pale gold.`,dieciseis:`${nb2}. Conscious copper.`};
+    const R={original:`${nb2} hums in amber tonight. The glass anchors what the music cannot.`,silver:`${nb2} at ${ctx.temp}. The air thins. CERO° answers in pale gold.`,dieciseis:`The ritual stays. The weight stays. CERO° honours presence over volume.`};
+    rec={product:p,title:T[p],reason:R[p],tags:{original:["Amber","Forward","Anchored"],silver:["Pale Gold","Translucent","Suspended"],dieciseis:["Copper","Late Hour","Conscious"]}[p]};
   }
   renderRes();go("res");
 }
@@ -1687,6 +1738,9 @@ function paiLoop(){
   updatePourUI(foamPct,foamRows,beerRows);
 }
 
+// Track previous state for haptic trigger
+let _paiWasOptimal = false;
+
 function updatePourUI(foamPct,foamRows,beerRows){
   const msg=document.getElementById('pai-msg');
   const bar=document.getElementById('pai-bar');
@@ -1694,40 +1748,50 @@ function updatePourUI(foamPct,foamRows,beerRows){
   const hasContent=foamRows+beerRows>15;
 
   let pct,color,message,subMsg;
+  const isOptimal = foamPct>=0.12 && foamPct<=0.28 && hasContent;
 
   if(!hasContent){
-    pct=0;color='rgba(255,255,255,0.2)';
-    message='Point camera at your glass';
-    subMsg='Place the glass in the center of the frame';
+    pct=0;color='rgba(232,228,220,0.15)';
+    message='Awaiting the glass.';
+    subMsg='The ritual starts at CERO°.';
   } else if(foamPct<0.05){
-    pct=15;color='#C8A96E';
-    message='Keep pouring...';
-    subMsg='No foam yet — tilt the glass at 45°';
+    pct=20;color='rgba(200,169,110,0.4)';
+    message='Gravity is not enough.';
+    subMsg='Tilt to awaken the CERO° foam.';
   } else if(foamPct<0.12){
-    pct=40;color='#C8942A';
-    message='Getting there...';
-    subMsg='A little more — CERO° standard is 2 fingers';
-  } else if(foamPct>=0.12&&foamPct<=0.28){
+    pct=55;color='#C8A96E';
+    message='The foam is forming.';
+    subMsg='Two fingers. No more.';
+  } else if(isOptimal){
     pct=100;color='var(--bright)';
-    message='✓ Perfect foam';
-    subMsg='CERO° standard achieved — continue when ready';
+    message='✓ Absolute CERO°.';
+    subMsg='The foam is now a sanctuary. Stop.';
   } else if(foamPct>0.28&&foamPct<=0.4){
-    pct=80;color='#C8942A';
-    message='Slow down...';
-    subMsg='Too much foam forming — ease off';
+    pct=70;color='#A06830';
+    message='Silence the pour.';
+    subMsg='You are crowding the moment.';
   } else {
-    pct=30;color='#A06830';
-    message='Stop! Over-foamed';
-    subMsg='Let the foam settle before adding more';
+    pct=40;color='#A06830';
+    message='You are drowning the ritual.';
+    subMsg='Let it settle. Begin again.';
   }
 
-  bar.style.width=pct+'%';bar.style.background=color;
+  bar.style.width=pct+'%';
+  bar.style.background=color;
   msg.textContent=message;
-  msg.style.color=foamPct>=0.12&&foamPct<=0.28?'var(--bright)':foamPct>0.4?'#A06830':'var(--cream)';
+  msg.style.color = isOptimal ? 'var(--bright)' : foamPct>0.4 ? '#A06830' : 'var(--cream)';
   sub.textContent=subMsg;
-  // Unlock Continue button when foam is perfect
+
+  // Haptic feedback — fires only on transition into optimal
+  if(isOptimal && !_paiWasOptimal){
+    if('vibrate' in navigator){
+      try { navigator.vibrate([12, 40, 12]); } catch(e){}
+    }
+  }
+  _paiWasOptimal = isOptimal;
+
   const btn=document.getElementById('pai-continue');
-  if(btn){btn.style.opacity=foamPct>=0.08?'1':'0.4'}
+  if(btn){btn.style.opacity = isOptimal ? '1' : '0.35'}
 }
 
 function drawGlassGuide(c,w,h){
@@ -1788,98 +1852,120 @@ function drawGlassGuide(c,w,h){
    STORY CARD — Canvas 1080×1920
 ═══════════════════════════════════════ */
 async function generateStoryCard(){
-  toast('Generating card...');
+  toast('Composing the moment...');
 
-  // Target the result page content
-  const target=document.getElementById('pg-res');
-  if(!target){toast('No result to capture');return}
+  if(!rec){toast('No ritual to capture');return}
 
-  // Temporarily make it full-viewport for capture
-  const prev={
-    pos:target.style.position,
-    top:target.style.top,
-    left:target.style.left,
-    width:target.style.width,
-    height:target.style.height,
-    zIndex:target.style.zIndex,
-    overflow:target.style.overflow,
-    bg:target.style.background,
-  };
+  const pr = PROD[rec.product]?.n || 'CERO° 8';
+  const imgSrc = IMGS[rec.product] || IMGS.original;
+  const neighborhood = ctx.neighborhood || ctx.city || 'Buenos Aires';
+  const tempStr = ctx.temp || '';
+  const weatherStr = ctx.weather || '';
+  const momentStr = ctx.dayLabel && ctx.timeLabel ? `${ctx.dayLabel} · ${ctx.timeLabel}` : '';
 
-  // Clone approach: capture the .body inner div
-  const body=target.querySelector('.body');
-  const inner=target.querySelector('.wrap');
-  if(!inner){toast('Nothing to capture');return}
-
-  // Create a styled wrapper for capture
-  const wrapper=document.createElement('div');
-  wrapper.style.cssText=`
-    position:fixed;top:0;left:0;
-    width:390px;height:844px;
-    background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,60,20,0.22),#020802 65%);
+  // 1080×1920 — Instagram Stories format
+  const wrapper = document.createElement('div');
+  wrapper.style.cssText = `
+    position:fixed;
+    top:0;
+    left:-99999px;
+    width:1080px;
+    height:1920px;
+    padding:120px 100px;
+    background:radial-gradient(circle at 50% 0%, rgba(160,104,48,0.18) 0%, #020802 70%);
     overflow:hidden;
-    z-index:-1;opacity:0;
-    font-family:'Cormorant Garamond',Georgia,serif;
+    z-index:99999;
+    opacity:1;
+    font-family:'Cormorant Garamond', Georgia, serif;
     -webkit-font-smoothing:antialiased;
-    padding:2rem 1.5rem;
-    display:flex;flex-direction:column;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
     box-sizing:border-box;
+    color:#E8E4DC;
   `;
 
-  // Build the card content mirroring result screen
-  const pr=rec?PROD[rec.product]?.n:'CERO° 8';
-  const imgSrc=rec?IMGS[rec.product]:IMGS.original;
-  const pills=[];
-  if(ctx.neighborhood||ctx.city) pills.push('📍 '+(ctx.neighborhood||ctx.city));
-  if(ctx.temp)                   pills.push('🌡 '+ctx.temp);
-  if(ctx.timeLabel)              pills.push('🕐 '+ctx.dayLabel+' '+ctx.timeLabel);
+  wrapper.innerHTML = `
+    <!-- TOP — minimal mark -->
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:18px">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <path fill="#C8A96E" d="M18 5a13 13 0 1 0 9.19 22.19A10 10 0 1 1 18 5z"/>
+        </svg>
+        <span style="font-family:Inter,system-ui;font-size:18px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:#C8A96E">CERO° Live</span>
+      </div>
+      <span style="font-family:Inter,system-ui;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:rgba(232,228,220,.35)">A Permanent Echo</span>
+    </div>
 
-  wrapper.innerHTML=`
-    <div style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:#C8A96E;margin-bottom:.75rem;font-family:Inter,system-ui">YOUR CERO° TONIGHT</div>
-    <div style="display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1.25rem">
-      ${pills.map(p=>`<span style="font-size:.42rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(200,169,110,.28);color:#C8A96E;padding:3px 9px;font-family:Inter,system-ui">${p}</span>`).join('')}
-    </div>
-    <div style="position:relative;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
-      <div style="position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(0,100,30,.28),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-      <img src="${imgSrc}" style="height:220px;width:auto;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(200,169,110,.4));position:relative;z-index:2;margin-bottom:1rem">
-      <div style="font-size:.42rem;letter-spacing:5px;text-transform:uppercase;color:rgba(200,169,110,.85);font-family:Inter,system-ui;margin-bottom:.5rem">${pr.toUpperCase()}</div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,7vw,2.2rem);font-weight:300;color:#F5F2EB;line-height:1.08;margin-bottom:.65rem;font-style:italic">${rec?rec.title:'Tonight Calls for Original'}</div>
-      <div style="font-size:.85rem;font-weight:300;color:rgba(245,242,235,.45);line-height:1.65;margin-bottom:.75rem;font-family:'Cormorant Garamond',Georgia,serif">${rec?rec.reason:''}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.28rem;justify-content:center">
-        ${(rec&&rec.tags||[]).map(t=>`<span style="font-size:.38rem;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(200,169,110,.22);color:#C8A96E;padding:3px 7px;font-family:Inter,system-ui">${t}</span>`).join('')}
+    <!-- BOTTLE + NAME — center anchor -->
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px">
+      <div style="position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle, rgba(200,169,110,.22), transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none"></div>
+      <img crossorigin="anonymous" src="${imgSrc}" style="height:660px;width:auto;object-fit:contain;filter:drop-shadow(0 30px 60px rgba(200,169,110,.4));position:relative;z-index:2">
+      <div style="position:relative;z-index:2;text-align:center">
+        <div style="font-family:Inter,system-ui;font-size:14px;letter-spacing:6px;text-transform:uppercase;color:rgba(200,169,110,.7);margin-bottom:14px">${pr}</div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(245,242,235,.08);padding-top:.75rem;margin-top:.75rem;display:flex;align-items:center;justify-content:space-between">
-      <div style="display:flex;align-items:center;gap:7px">
-        
+
+    <!-- TITLE + TASTING NOTE -->
+    <div style="text-align:center;max-width:760px;margin:0 auto">
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:62px;font-weight:300;font-style:italic;color:#E8E4DC;line-height:1.05;letter-spacing:-0.5px;margin-bottom:32px">A Moment CERO°<br>in ${neighborhood}.</div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:300;font-style:italic;color:rgba(232,228,220,.55);line-height:1.45;max-width:680px;margin:0 auto">${rec.title || ''}</div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:300;color:rgba(232,228,220,.4);line-height:1.55;margin-top:28px;max-width:680px;margin-left:auto;margin-right:auto">${rec.reason || ''}</div>
+    </div>
+
+    <!-- BOTTOM — atmospheric data + watermark -->
+    <div style="display:flex;flex-direction:column;gap:30px">
+      <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap">
+        ${tempStr ? `<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="font-family:Inter,system-ui;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(200,169,110,.5)">Air</div><div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:#E8E4DC;font-style:italic">${tempStr}</div></div>` : ''}
+        ${weatherStr ? `<div style="width:1px;background:rgba(232,228,220,.12)"></div><div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="font-family:Inter,system-ui;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(200,169,110,.5)">Sky</div><div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:#E8E4DC;font-style:italic">${weatherStr}</div></div>` : ''}
+        ${momentStr ? `<div style="width:1px;background:rgba(232,228,220,.12)"></div><div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="font-family:Inter,system-ui;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(200,169,110,.5)">Hour</div><div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:#E8E4DC;font-style:italic">${momentStr}</div></div>` : ''}
       </div>
-      <span style="font-size:.38rem;letter-spacing:3px;text-transform:uppercase;color:rgba(200,169,110,.5);font-family:Inter,system-ui">BUILT BY KAIRO</span>
+
+      <div style="text-align:center;border-top:1px solid rgba(232,228,220,.08);padding-top:24px">
+        <div style="font-family:Inter,system-ui;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(200,169,110,.35)">CERO° LIVE · Digitizing the moment CERO°</div>
+      </div>
     </div>
   `;
 
   document.body.appendChild(wrapper);
-  // Brief wait for images to load
-  await new Promise(r=>setTimeout(r,600));
 
-  // Capture with html2canvas at 2x for retina
-  try{
-    const cv=await html2canvas(wrapper,{
-      scale:2.75,
-      useCORS:true,
-      allowTaint:true,
-      backgroundColor:'#020802',
-      width:390,height:844,
-      logging:false,
+  // Wait for image to load
+  const cardImg = wrapper.querySelector('img');
+  await new Promise(resolve => {
+    if(cardImg.complete && cardImg.naturalHeight !== 0){resolve();return}
+    cardImg.onload = resolve;
+    cardImg.onerror = resolve;
+    setTimeout(resolve, 2500);
+  });
+
+  await new Promise(r => setTimeout(r, 250));
+
+  try {
+    const cv = await html2canvas(wrapper, {
+      scale: 1,  // already 1080x1920 native
+      useCORS: true,
+      allowTaint: false,
+      backgroundColor: '#020802',
+      width: 1080,
+      height: 1920,
+      logging: false,
+      imageTimeout: 3000,
+      onclone: (doc) => {
+        const cloned = doc.body.querySelector('div[style*="left:-99999px"]');
+        if(cloned) cloned.style.background = 'radial-gradient(circle at 50% 0%, rgba(160,104,48,0.18) 0%, #020802 70%)';
+      }
     });
-    const link=document.createElement('a');
-    link.download='cero-ritual.png';
-    link.href=cv.toDataURL('image/png',0.95);
+
+    const link = document.createElement('a');
+    link.download = 'cero-moment.png';
+    link.href = cv.toDataURL('image/png', 0.95);
     link.click();
-    toast('Story Card saved ★');
-  }catch(e){
-    console.error(e);
-    toast('Error generating card');
-  }finally{
+
+    toast('Fifteen seconds. Then, darkness. Moment CERO° found.');
+  } catch(e) {
+    console.error('html2canvas error:', e);
+    toast('Capture failed');
+  } finally {
     document.body.removeChild(wrapper);
   }
 }
